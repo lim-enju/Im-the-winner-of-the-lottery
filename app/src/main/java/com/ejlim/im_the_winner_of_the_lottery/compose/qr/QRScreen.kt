@@ -1,20 +1,28 @@
 package com.ejlim.im_the_winner_of_the_lottery.compose.qr
 
 import android.Manifest
-import android.app.Activity
-import android.content.Context
-import android.content.pm.PackageManager
-import androidx.activity.compose.ManagedActivityResultLauncher
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
+import android.util.Size
+import android.view.View
+import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.widget.Toolbar
-import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.Preview
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.view.PreviewView
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.GenericShape
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -22,45 +30,175 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.viewinterop.AndroidViewBinding
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.ejlim.im_the_winner_of_the_lottery.databinding.QrScreenBinding
+import com.ejlim.im_the_winner_of_the_lottery.util.QRCode
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
-import com.journeyapps.barcodescanner.CaptureManager
-import com.journeyapps.barcodescanner.CompoundBarcodeView
+import java.lang.Math.sqrt
 
-@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun QRScreen(
     modifier: Modifier = Modifier,
     onSuccessQrScan:() -> Unit,
     onAttached: (Toolbar) -> Unit = {}
 ) {
-    val context = LocalContext.current
-
-    val permisionState = rememberPermissionState(Manifest.permission.CAMERA)
-
-    //permisionState가 바뀔 때 마다 suspend fun을 취소하고 재실행
-    LaunchedEffect(permisionState){
-       if(!permisionState.status.isGranted){
-           permisionState.launchPermissionRequest()
-       }
+    AndroidViewBinding(factory = QrScreenBinding::inflate, modifier = modifier){
+        composeView.setContent{
+            QrPagerScreen()
+        }
     }
-
 }
 
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun QrPagerScreen(
 
 ){
-    Column {
-        Text(text = "qr")
+    val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
+
+    //권한 요청
+    val permisionState = rememberPermissionState(Manifest.permission.CAMERA)
+
+    //permisionState가 바뀔 때 마다 suspend fun을 취소하고 재실행
+    LaunchedEffect(permisionState){
+        if(!permisionState.status.isGranted){
+            permisionState.launchPermissionRequest()
+        }
+    }
+
+    //인식 된 QR 코드
+    var code by remember { mutableStateOf("") }
+
+    val cameraProviderFeature = remember {
+        ProcessCameraProvider.getInstance(context)
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        //권한 미동의시 처리
+        if(!permisionState.status.isGranted) {
+
+        }
+
+        if(code.isNotBlank()){
+            LoadWebUrl(code)
+        }
+
+        AndroidView(
+            factory = { context ->
+                val previewView = PreviewView(context).apply {
+                    layoutParams = ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                }
+                val preview = Preview.Builder().build()
+                val selector = CameraSelector.Builder()
+                    .requireLensFacing(CameraSelector.LENS_FACING_BACK)
+                    .build()
+                preview.setSurfaceProvider(previewView.surfaceProvider)
+                val imageAnalysis = ImageAnalysis.Builder()
+                    .setTargetResolution(
+                        Size(
+                            previewView.width,
+                            previewView.height
+                        )
+                    )
+                    .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                    .build()
+                imageAnalysis.setAnalyzer(
+                    ContextCompat.getMainExecutor(context),
+                    QRCode { result ->
+                        code = result
+                    }
+                )
+                try {
+                    cameraProviderFeature.get().bindToLifecycle(
+                        lifecycleOwner,
+                        selector,
+                        preview,
+                        imageAnalysis
+                    )
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                previewView
+            },
+        )
+
+        Divider(
+            modifier = Modifier
+                .align(Alignment.Center)
+                .width(30.dp)
+                .height(1.dp),
+            color = Color.Green,
+        )
+        Divider(
+            modifier = Modifier
+                .align(Alignment.Center)
+                .width(1.dp)
+                .height(30.dp),
+            color = Color.Green,
+        )
+        Column (
+            modifier = Modifier.align(Alignment.BottomCenter),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Text(
+                modifier = Modifier.padding(2.dp),
+                text = "QR/바코드",
+                color = Color.White,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            TriangleShape(
+                color = Color.White
+            )
+        }
+    }
+}
+
+@Composable
+fun LoadWebUrl(url: String) {
+    val context = LocalContext.current
+    AndroidView(factory = {
+        WebView(context).apply {
+            webViewClient = WebViewClient()
+            loadUrl(url)
+        }
+    })
+}
+
+@Composable
+fun TriangleShape(color: Color = Color.White) {
+    Canvas(modifier = Modifier.size(20.dp),) {
+        val path = Path().apply {
+            val triangleSide = size.width
+            val height = triangleSide * (sqrt(3.0) / 2.0).toFloat()
+            moveTo(triangleSide / 2f, 0f)
+            lineTo(0f, height)
+            lineTo(triangleSide, height)
+            close()
+        }
+        drawPath(path, color)
     }
 }
