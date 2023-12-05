@@ -2,10 +2,7 @@ package com.ejlim.im_the_winner_of_the_lottery.compose.qr
 
 import android.Manifest
 import android.util.Size
-import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.appcompat.widget.Toolbar
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
@@ -13,7 +10,6 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,7 +17,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.GenericShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,35 +27,36 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.viewinterop.AndroidViewBinding
-import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.ejlim.im_the_winner_of_the_lottery.databinding.QrScreenBinding
 import com.ejlim.im_the_winner_of_the_lottery.util.QRCode
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.lang.Math.sqrt
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Composable
 fun QRScreen(
     modifier: Modifier = Modifier,
-    onSuccessQrScan:() -> Unit,
+    onQrReadResult:(String) -> Unit,
     onAttached: (Toolbar) -> Unit = {}
 ) {
     AndroidViewBinding(factory = QrScreenBinding::inflate, modifier = modifier){
         composeView.setContent{
-            QrPagerScreen()
+            QrPagerScreen(onQrReadResult)
         }
     }
 }
@@ -68,7 +64,7 @@ fun QRScreen(
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun QrPagerScreen(
-
+    onQrReadResult:(String) -> Unit,
 ){
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -85,6 +81,14 @@ fun QrPagerScreen(
 
     //인식 된 QR 코드
     var code by remember { mutableStateOf("") }
+    LaunchedEffect(code){
+        if(code.isNotBlank()){
+            val url = withContext(Dispatchers.IO) {
+                URLEncoder.encode(code, StandardCharsets.UTF_8.toString())
+            }
+            onQrReadResult(url)
+        }
+    }
 
     val cameraProviderFeature = remember {
         ProcessCameraProvider.getInstance(context)
@@ -94,15 +98,6 @@ fun QrPagerScreen(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        //권한 미동의시 처리
-        if(!permisionState.status.isGranted) {
-
-        }
-
-        if(code.isNotBlank()){
-            LoadWebUrl(code)
-        }
-
         AndroidView(
             factory = { context ->
                 val previewView = PreviewView(context).apply {
@@ -175,17 +170,6 @@ fun QrPagerScreen(
             )
         }
     }
-}
-
-@Composable
-fun LoadWebUrl(url: String) {
-    val context = LocalContext.current
-    AndroidView(factory = {
-        WebView(context).apply {
-            webViewClient = WebViewClient()
-            loadUrl(url)
-        }
-    })
 }
 
 @Composable

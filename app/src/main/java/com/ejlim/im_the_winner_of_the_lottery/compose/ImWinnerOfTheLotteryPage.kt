@@ -6,5 +6,6 @@ import com.ejlim.im_the_winner_of_the_lottery.R
 enum class ImWinnerOfTheLotteryPage (
     @StringRes val titleResId: Int
 ){
-    QR(R.string.page_qr)
+    QR(R.string.page_qr),
+    LOTTERY_RESULT(R.string.page_lottery_result)
 }
