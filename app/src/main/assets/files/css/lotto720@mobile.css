@@ -1,0 +1,138 @@
+/************************************************************** JJANG s (2020328) **************************************************************/
+.main_info_lottery .lottery_section .yg_group .section_content {text-align:center;}
+.win720_num {position:relative;width:80%;margin:0 auto;overflow:hidden;}
+.win720_num .num {position:relative;display:inline-block;margin:0 2px;padding:1px;width:30px;height:30px;vertical-align:middle;text-align:center;font-weight:bold;background:#fff;border:3px solid #c7c7c7;border-radius:50%;box-sizing:border-box;}
+.win720_num .num span {display:inline-block;width:100%;height:100%;line-height:20px;font-size:14px;background:#fff;border:1px solid #c7c7c7;border-radius:50%;box-sizing:border-box;}
+.win720_num .group {float:left;display:inline-block;width:25%;padding-right:5%;line-height:30px;font-size:13px;box-sizing:border-box;}
+.win720_num .group span {position:relative;display:inline-block;margin-right:5px;padding:1px;width:30px;height:30px;line-height:26px;font-size:14px;text-align:center;font-weight:bold;background:#fff;border:1px solid #c7c7c7;border-radius:50%;box-sizing:border-box;}
+.win720_num .group span:after {position:absolute;left:50%;top:50%;margin:-13px 0 0 -13px;width:26px;height:26px;border:1px solid #c7c7c7;border-radius:50%;box-sizing:border-box;content:"";}
+.win720_num .group_list {float:left;display:inline-block;width:25%;padding-right:5%;line-height:30px;font-size:13px;box-sizing:border-box;}
+.win720_num .group_list span {position:relative;display:inline-block;margin-right:5px;padding:1px;width:30px;height:30px;line-height:26px;font-size:14px;text-align:center;font-weight:bold;background:#fff;border:1px solid #c7c7c7;border-radius:50%;box-sizing:border-box;}
+.win720_num .group_list span:after {position:absolute;left:50%;top:50%;margin:-13px 0 0 -13px;width:26px;height:26px;border:0px solid #c7c7c7;border-radius:50%;box-sizing:border-box;content:"";}
+.win720_num .num.lose, .win720_num .num.lose span,
+.win720_num .group.lose span, .win720_num .group.lose span:before {background-color:transparent !important;border-color:transparent !important;}
+.win720_num .group_list.lose span, .win720_num .group_list.lose span:before {background-color:transparent !important;border-color:transparent !important;}
+.win720_num .cap {padding:10px 0 12px;text-align:center;}
+.win720_num .cap strong {color:#333;font-size:12px;}
+.win720_num .cap .amount {color:#333;font-size:11px;}
+.win720_num .cap .amount blue {color:#007bc3;}
+.win720_num .num_list {float:left;width:75%;}
+.win720_num .num_list li {float:left;width:16.6%;text-align:center;}
+.win720_num + .win720_num {margin-top:10px;}
+.win720_num + .win720_num:after {position:absolute;left:0;right:0;top:0;height:1px;background:#e1e1e1;content:"";}
+.win720_num + .win720_num .num_list li:last-child {}
+.win720_num + .win720_num .num_list li:last-child:after {position:absolute;right:0;top:0;width:calc((12.8% - 30px)/2);height:1px;background:#fff;content:"";z-index:1;}
+.win720_num + .win720_num .group:after {position:absolute;left:0;top:0;width:calc((20% - 50px)/2);height:1px;background:#fff;content:"";z-index:1;}
+.win720_num + .win720_num .group_list:after {position:absolute;left:0;top:0;width:calc((20% - 50px)/2);height:1px;background:#fff;content:"";z-index:1;}
+.win720_lottery_list {margin:13px 0 0;border-top:2px solid #e1e1e1;}
+.win720_lottery_list li {display:table;width:100%;border:2px solid #e1e1e1;border-top:none;overflow:hidden;}
+.win720_lottery_list li .tit {display:table-cell;width:60px;line-height:11px;color:#007ac3;font-size:10px;text-align:center;vertical-align:middle;border-right:2px solid #e1e1e1; background:#ffffff;}
+.win720_lottery_list li .win720_num {display:table-cell;width:auto;vertical-align:middle;text-align:center; background:#ffffff;}
+.win720_lottery_list li .result {display:table-cell;width:50px;vertical-align:middle;text-align:center;background:#f5f5f5;}
+.win720_lottery_list li .result.win {color:#e94291;}
+.win720_lottery_list li .win720_num {padding:10px 0;}
+.win720_lottery_list li .win720_num .num {width:24px;height:24px;margin:0;}
+.win720_lottery_list li .win720_num .num span {line-height:16px;font-size:11px;}
+.win720_lottery_list li .win720_num .group {float:none;width:auto;height:24px;margin-right:5px;padding-right:0;line-height:24px;font-size:10px;vertical-align:middle;}
+.win720_lottery_list li .win720_num .group span {width:24px;height:24px;margin-right:2px;line-height:22px;font-size:11px;vertical-align:middle;}
+.win720_lottery_list li .win720_num .group span:after {margin:-10px 0 0 -10px;width:20px;height:20px;}
+.win720_lottery_list li .win720_num .group_list {float:none;width:auto;height:24px;margin-right:5px;padding-right:0;line-height:24px;font-size:10px;vertical-align:middle;}
+.win720_lottery_list li .win720_num .group_list span {width:24px;height:24px;margin-right:2px;line-height:22px;font-size:11px;vertical-align:middle;}
+.win720_lottery_list li .win720_num .group_list span:after {margin:-10px 0 0 -10px;width:20px;height:20px;}
+
+.sub #content .lotto_area .card .prize_number .win720_num + .win720_num .group:after {width:0;}
+.sub #content .lotto_area .card .prize_number .win720_num + .win720_num .num_list li:last-child:after {background:#f5f5f5;}
+
+.main_info_lottery .lottery_section .yg_group .section_content .win720_num .cap {padding:7px 0 5px;}
+
+/* �곌툑蹂듦텒720 color */
+.al720_color0, .al720_color0 span {border-color:#ffffff !important;}
+.al720_color1, .al720_color1 span {border-color:#ff4c4c !important;}
+.al720_color2, .al720_color2 span {border-color:#ff8e4f !important;}
+.al720_color3, .al720_color3 span {border-color:#fcd153 !important;}
+.al720_color4, .al720_color4 span {border-color:#3cbcff !important;}
+.al720_color5, .al720_color5 span {border-color:#8d70da !important;}
+.al720_color6, .al720_color6 span {border-color:#777777 !important;}
+/************************************************************** //JJANG e (2020328) **************************************************************/
+
+/************************************************************** JJANG s (20200524) **************************************************************/
+.rolling_tip {position:relative;width:100%;height:24px;padding-left:45px;box-sizing:border-box;overflow:hidden;}
+.rolling_tip dt {position:absolute;left:0;top:0;width:55px;height:100%;line-height:21px;color:#333;font-size:12px;font-weight:500;text-align:center;background:#fcd153;border:1px solid #fcd153;border-radius:12px;}
+.rolling_tip dd {float:left;width:100%;height:100%;padding:0 10px 0 20px;border:1px solid #fcd153;border-radius:0 16px 16px 0;box-sizing:border-box;}
+#tip_list ul li {line-height:22px;text-align:left;}
+
+.section_main .main_info_lottery {height:auto;}
+.section_main .main_info_lottery .lottery_section {height:auto;}
+.section_main .main_info_lottery .lottery_section.pension720 {padding-bottom:12px;}
+.section_main .main_info_lottery .lottery_section .yg_group {padding-bottom:30px;}
+.section_main .main_info_lottery .lottery_section .yg_group .slide_item .prizeresult .section_title {padding-top:15px;}
+.section_main .main_info_lottery .lottery_section .yg_group .slick-dots {bottom:10px;}
+
+.section_al720 .own_num_wrap .btns_submit {padding-bottom:10px;}
+.section_al720 .own_num_wrap .btns_submit .tip_purchase {margin:5px 0 0;padding-left:15px;line-height:13px;color:#0a8cfa;font-size:12px;text-align:left;background:url('/images/mobile/common/ico_tip_mobile.png') no-repeat 0 6px;background-size:12px auto;}
+.section_al720 .own_num_wrap .btns_submit .tip_purchase strong {display:block;line-height:24px;}
+/************************************************************** //JJANG e (20200524) **************************************************************/
+
+/* �뱀꺼�먯씤�곕럭 由ъ뒪�� */
+.search_area .inp .wide_r  {position:relative;padding-right:50%;}
+.search_area .inp .wide_r .full {position:absolute;right:0;top:0;width:50%;margin-top:0;padding-left:6px;}
+
+.interview_list li {position:relative;margin-bottom:15px;padding:15px 10px 40px;background:#fff;}
+.interview_list li .logo.lottery720 {display:inline-block;width:110px; height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_lotto720.png') 0 0 no-repeat;background-size:110px auto;}
+.interview_list li .logo.speetto {display:inline-block;width:70px;height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_speetto.png') 0 0 no-repeat;background-size:70px auto;}
+.interview_list li .logo.lotto645 {display:inline-block;width:80px;height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_lotto645.png') 0 0 no-repeat;background-size:80px auto;}
+.interview_list li .logo.lottery520 {display:inline-block;width:95px;height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_lotto520.png') 0 0 no-repeat;background-size:95px auto;}
+.interview_list li .logo.double_jack {display:inline-block;width:45px;height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_double_jack.png') 0 0 no-repeat;background-size:45px auto;}
+.interview_list li .logo.catch_me {display:inline-block;width:65px;height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_catch_me.png') 0 0 no-repeat;background-size:65px auto;}
+.interview_list li .logo.mega_bingo {display:inline-block;width:65px;height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_mega_bingo.png') 0 0 no-repeat;background-size:65px auto;}
+.interview_list li .logo.powerball {display:inline-block;width:50px;height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_powerball_new.png') 0 0 no-repeat;background-size:50px auto;}
+.interview_list li .logo.speed_kino {display:inline-block;width:60px;height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_speed_kino.png') 0 0 no-repeat;background-size:60px auto;}
+.interview_list li .logo.treasure {display:inline-block;width:60px;height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_treasure.png') 0 0 no-repeat;background-size:60px auto;}
+.interview_list li .logo.tripleluck {display:inline-block;width:50px;height:35px;text-indent:-9999em;background:url('/images/mobile/common/logo_tripleluck.png') 0 0 no-repeat;background-size:50px auto;}
+
+.interview_list li .date {float:right;margin-top:5px;color:#999;font-size:10px;}
+.interview_list li .date dt {float:left;margin-right:5px;padding-right:5px;border-right:1px solid #999;}
+.interview_list li .date dd {float:left;}
+.interview_list li .txt dt {color:#172129;font-size:12px;font-weight:600;}
+.interview_list li .txt dd {margin-top:8px;color:#999;font-size:10px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+.interview_list li .btn_round {position:absolute;right:10px;bottom:12px;}
+.interview_list.no_data {position:relative;}
+.interview_list.no_data:after {position:absolute;top:-10px;width:100%;height:100%;padding-top:120px;color:#999;font-size:12px;text-align:center;box-sizing:border-box;background:#fff url('/images/mobile/common/icon_no_list2.png') no-repeat 50% 70px;background-size:45px auto;content:"議고쉶 �댁뿭�� �놁뒿�덈떎.";}
+
+.btn_round.small span.arrow_r {margin:0 3px;padding-right:10px;font-weight:normal;background:url('/images/mobile/common/arrow_detail.png') no-repeat right 50%;background-size:6px auto;}
+
+/* �뱀꺼�먯씤�곕럭 蹂닿린 */
+.interview_view {margin:10px 10px 20px;border-top:1px solid #333;}
+.interview_view .tit {padding:0 10px;color:#333;font-size:11px;font-weight:600;line-height:45px;}
+.interview_view .info {padding:10px;border-top:1px solid #e1e1e1;border-bottom:1px solid #e1e1e1;overflow:hidden;}
+.interview_view .info dt {float:left;width:40px;border-right:1px solid #e1e1e1;}
+.interview_view .info dd {float:left;padding-left:10px;width:calc(50% - 40px);}
+.interview_view .interview_contents {padding:10px 0 0;color:#333;font-size:12px;line-height:15px;}
+.interview_view .interview_contents img {width:100%;margin-top:5px;}
+
+/* �곷떒 諛곕꼫 */
+#header.withBanner {height:128px;}
+.main_banner {position:relative;width:100%;height:65px;background:#2b3559;}
+.main_banner .main_banner_link {display:inline-block;margin:0 auto;width:360px;height:100%;}
+.main_banner .main_banner_link img {height:100%;}
+.main_banner input[type="checkbox"] + label {position:absolute;right:0;top:0;padding:40px 0 0;width:60px;height:100%;color:#fff;font-size:12px;text-align:center;background:url('/images/mobile/layout/btn_banner_close.png') no-repeat 50% 10px;background-size:25px auto;box-sizing:border-box;}
+.main_banner input[type="checkbox"] + label:after {display:none;}
+
+/* break time �덈궡 �앹뾽 */
+.layer_popup {position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(0,0,0,0.65);}
+.layer_popup .layer_box {position:absolute;left:50%;top:50%;padding:3px;width:310px;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);background:#11b1d5;box-sizing:border-box;}
+.layer_popup .layer_box h1 {padding-left:10px;height:27px;line-height:25px;color:#fff;font-size:12px;font-weight:400;letter-spacing:0;}
+.layer_inner {padding:4px;text-align:center;background:#fff;}
+.layer_inner .txt {margin:5px 0 15px;color:#333;line-height:14px;}
+.layer_inner .txt strong {color:#ff0000;font-weight:normal;}
+.layer_box .btns {margin-bottom:6px;overflow:hidden;}
+.layer_box .btns a {float:left;width:calc(50% - 2px);height:32px;line-height:18px;vertical-align:middle;color:#fff;font-size:8px;border-radius:16px;background:#156994;box-sizing:border-box;letter-spacing:0;}
+.layer_box .btns a span {display:block;font-size:11px;}
+.layer_box .btns a + a {float:right;line-height:32px;font-size:10px;background:#26af80;}
+.layer_popup .layer_box .layer_close {position:absolute;right:0;top:0;width:30px;height:30px;text-indent:-9999px;background:url('/image/mobile/layout/btn_layer_close.png') no-repeat 50% 50%;background-size:16px auto;}
+
+/* �좏뒠釉� �숈쁺�� �몄텧 */
+.section_buy_info.lottery720 .movie_area {margin-top:24px;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;}
+.section_buy_info.lottery720 .movie_area iframe,
+.section_buy_info.lottery720 .movie_area object,
+.section_buy_info.lottery720 .movie_area embed {position:absolute;top:0;left:0;width:100%;height:100%;}

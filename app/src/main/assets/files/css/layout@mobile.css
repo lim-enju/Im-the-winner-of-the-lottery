@@ -1,0 +1,128 @@
+@charset "EUC-KR";
+
+#wrapper {}
+#header {position:fixed; left:0; top:0; right:0; z-index:500; height:63px; text-align:center; background:#fff}
+#header.main {position:static}
+#header.main:after {content:""; display:none; clear:both}
+#header.main + #container {padding-top:0}
+#header .logo {display:inline-block; height:63px}
+#header .logo a {display:inline-block; width:74px; height:63px; line-height:63px; font-size:0; text-indent:-9999em; background:url(../common/logo.png) 0 50% no-repeat; background-size:74px auto}
+/* #header .logo a {display:inline-block;width: 117px; height:63px; line-height: 63px; font-size:0; text-indent:-9999em; background: url(/images/mobile/common/logo.png) 0 50% no-repeat; background-size:117px auto} */
+#header a.menu_btn {float:left; width:53px; height:63px; font-size:0; text-indent:-9999em; background:url(../common/bg_menu.png) 50% 50% no-repeat; background-size:20px auto}
+#header a.mypage {float:right; width:53px; height:63px; font-size:0; text-indent:-9999em; background:url(../common/bg_mypage.png) 50% 50% no-repeat; background-size:21px auto}
+/* #header #gnb {display:none; position:fixed; left:0; top:0; right:0; bottom:0; z-index:1000; overflow-y:auto; background:rgba(0, 0, 0, .5)}
+#header #gnb .inner {position:absolute; left:-288px; top:0; z-index:999; width:288px; text-align:left; background:#fff}
+#header #gnb h2 {font-weight:400; font-size:15px; color:#333; letter-spacing:-0.025em}
+#header #gnb .btns {position:relative; height:63px; text-align:center; border-bottom:1px solid #dcdcdc}
+#header #gnb .btns .home {position:absolute; left:0; top:0; width:53px; height:63px; line-height:0; color:transparent; text-indent:-9999em; background:url(/images/mobile/common/ico_home.png) 50% 50% no-repeat; background-size:24px auto}
+#header #gnb .btns .logo {display:inline-block; width:74px; height:63px; line-height:0; color:transparent; text-indent:-9999em; vertical-align:middle; background:url(/images/mobile/common/logo.png) 50% 50% no-repeat; background-size:74px auto}
+#header #gnb .btns .close {position:absolute; right:0; top:0; width:50px; height:63px; line-height:0; color:transparent; text-indent:-9999em; background:url(/images/mobile/common/ico_close.png) 50% 50% no-repeat; background-size:17px auto}
+#header #gnb .move_game {padding:17px 0 20px; background:#fafafa}
+#header #gnb .move_game h2 {padding:0 25px 13px}
+#header #gnb .move_game ul {padding:0 17px; text-align:center}
+#header #gnb .move_game ul:after {content:""; display:block; clear:both}
+#header #gnb .move_game ul li {float:left; width:33.33%}
+#header #gnb .move_game ul li ~ li {border-left:1px solid #dcdcdc}
+#header #gnb .move_game ul li a {display:inline-block; width:74px; padding-top:48px; letter-spacing:-0.025em}
+#header #gnb .move_game ul li.pension a {background:url(/images/mobile/common/logo_lotto520.png) 50% 11px no-repeat; background-size:74px auto}
+#header #gnb .move_game ul li.power a {background:url(/images/mobile/common/logo_powerball_new.png) 50% 0 no-repeat; background-size:46px auto}
+#header #gnb .move_game ul li.triple a {background:url(/images/mobile/common/logo_tripleluck.png) 50% 0 no-repeat; background-size:45px auto}
+#header #gnb .menu > ul > li {border-top:1px solid #dcdcdc; box-sizing:border-box}
+#header #gnb .menu > ul > li > h2 > a {display:block; position:relative; height:57px; line-height:57px; padding:0 25px; color:#333; box-sizing:border-box}
+#header #gnb .menu > ul > li > h2 > a:after {content:""; position:absolute; right:19px; top:50%; z-index:1; width:13px; height:7px; margin-top:-4px; background:url(/images/mobile/common/bg_arrow_down.png) 50% 50% no-repeat; background-size:13px auto}
+#header #gnb .menu > ul > li > h2.active > a:after {background:url(/images/mobile/common/bg_arrow_up.png) 50% 50% no-repeat; background-size:13px auto}
+#header #gnb .menu > ul > li > ul {display:none; padding:17px 36px; border-top:1px solid #dcdcdc; background:#fafafa}
+#header #gnb .menu > ul > li > ul > li ~ li {margin-top:10px}
+#header #gnb .menu > ul > li > ul > li > a {display:inline-block; position:relative; padding:5px; font-size:13px; letter-spacing:-0.025em}
+#header #gnb .menu > ul > li > ul > li > a:after {content:""; position:absolute; left:0; top:50%; width:1px; height:1px; background:#666}
+#header #gnb .shortcut {border-top:1px solid #dcdcdc}
+#header #gnb .shortcut ul:after {content:""; display:block; clear:both}
+#header #gnb .shortcut ul li {float:left; width:50%; background:#f4f4f6}
+#header #gnb .shortcut ul li ~ li {position:relative}
+#header #gnb .shortcut ul li ~ li:after {content:""; position:absolute; left:-1px; top:50%; width:1px; height:13px; margin-top:-7px; background:#dcdcdc}
+#header #gnb .shortcut ul li a {display:block; height:56px; line-height:56px; font-size:13px; color:#888; text-align:center; letter-spacing:-0.03em} */
+
+#container {padding:114px 0 26px}
+#container .head_title {position:fixed; left:0; top:63px; right:0; z-index:10; height:51px; text-align:center; background:#007bc3}
+#container .head_title h2 {height:51px; line-height:51px; font-weight:500; font-size:17px; color:#fff}
+#container .head_title a.back {position:absolute; left:0; top:0; width:46px; height:51px; font-size:0; text-indent:-9999em; background:url(/images/mobile/common/bg_arrow_back.png) 50% 50% no-repeat; background-size:11px auto}
+#footer {padding:16px 0 23px; text-align:center; border-top:1px solid #dcdcdc}
+/* #footer .contact {padding-top:27px; background:url(/images/mobile/common/bg_contact.png) 50% 0 no-repeat; background-size:30px auto}
+#footer .contact strong,
+#footer .contact strong a {font-weight:500; font-size:17px; color:#222}
+#footer .contact p {padding-top:9px; font-size:10px; color:#3080b2}
+#footer .btns {padding-top:14px} */
+#footer .contact:after {content:""; display:block; clear:both}
+#footer .contact > div {float:left; width:50%; text-align:center}
+#footer .contact > div strong {display:inline-block; line-height:16px; font-size:12px; color:#252525; letter-spacing:-0.02em}
+#footer .contact > div p {padding-top:12px; font-size:10px; color:#252525; letter-spacing:-0.02em}
+#footer .contact > div p span {display:block; padding-top:5px}
+#footer .contact .tel strong {padding-left:23px; background:url(../common/bg_contact2.png) 0 50% no-repeat; background-size:16px auto}
+#footer .contact .tel strong span {position:absolute; left:-9999px; line-height:0; color:transparent; text-indent:-9999em}
+#footer .contact .tel a {font-size:12px; color:#252525; letter-spacing:-0.02em}
+#footer .contact .one strong {padding-left:19px; background:url(../common/bg_contact3.png) 0 50% no-repeat; background-size:12px auto}
+#footer .btns {padding-top:15px}
+#footer .btns a {width:104px; margin:0 2px}
+#footer .clause {padding-top:13px}
+#footer .clause ul {display:inline-block}
+#footer .clause ul:after {content:""; display:block; clear:both}
+#footer .clause ul li {float:left; font-size:10px}
+#footer .clause ul li ~ li {position:relative; margin-left:16px}
+#footer .clause ul li ~ li:after {content:""; position:absolute; left:-8px; top:50%; width:1px; height:7px; margin-top:-4px; background:#727272}
+#footer .clause ul li a {color:#767676}
+
+/*2019-09-20 새창타이틀추가*/
+#pop_container .pop_head_title {position:fixed; left:0; top:0; right:0; z-index:10; height:51px; text-align:center; background:#007bc3}
+#pop_container .pop_head_title h2 {height:51px; line-height:51px; font-weight:500; font-size:17px; color:#fff}
+#pop_container {padding:50px 0 26px}
+
+/*2019-09-23 gnb 수정*/
+#header #gnb {display:none; position:fixed; left:0; top:0; right:0; bottom:0; z-index:1000; overflow-y:auto; background:rgba(0, 0, 0, .5)}
+#header #gnb .inner {position:absolute; left:-100%; top:0; z-index:999; width:100%; text-align:left; background:#fff}
+#header #gnb h2 {font-weight:400; font-size:15px; color:#333; letter-spacing:-0.025em}
+#header #gnb .btns {position:relative; height:63px; text-align:center; border-bottom:1px solid #dcdcdc}
+#header #gnb .btns .home {position:absolute; left:0; top:0; width:53px; height:63px; line-height:0; color:transparent; text-indent:-9999em; background:url(/images/mobile/common/ico_home.png) 50% 50% no-repeat; background-size:24px auto}
+#header #gnb .btns .logo {display:inline-block; width:74px; height:63px; line-height:0; color:transparent; text-indent:-9999em; vertical-align:middle; background:url(/images/mobile/common/logo.png) 50% 50% no-repeat; background-size:74px auto}
+#header #gnb .btns .close {position:absolute; right:0; top:0; width:50px; height:63px; line-height:0; color:transparent; text-indent:-9999em; background:url(/images/mobile/common/ico_close.png) 50% 50% no-repeat; background-size:17px auto}
+#header #gnb .move_game {padding:17px 0 20px; background:#fafafa}
+#header #gnb .move_game h2 {padding:0 25px 13px}
+#header #gnb .move_game ul {padding:0 17px; text-align:center;}
+#header #gnb .move_game ul:after {content:""; display:block; clear:both;}
+#header #gnb .move_game ul li {float:left; width:25%; background-color:#fff; padding:5px;border-right:1px solid #dcdcdc; border-bottom:1px solid #dcdcdc;}
+#header #gnb .move_game ul li ~ li {border-right:1px solid #dcdcdc;}
+#header #gnb .move_game .lt {border-left:1px solid #dcdcdc;}
+#header #gnb .move_game .top {border-top:1px solid #dcdcdc;}
+#header #gnb .move_game ul li a {display:inline-block; width:74px; padding-top:48px; letter-spacing:-0.025em}
+#header #gnb .move_game ul li.pension a {background:url(/images/mobile/common/logo_lotto520.png) 50% 11px no-repeat; background-size:60px auto}
+#header #gnb .move_game ul li.pension720 a {background:url(/images/mobile/common/logo_lotto720.png) 50% 11px no-repeat; background-size:70px auto}
+#header #gnb .move_game ul li.power a {background:url(/images/mobile/common/logo_powerball_new.png) 50% 0px no-repeat; background-size:45px auto}
+#header #gnb .move_game ul li.triple a {background:url(/images/mobile/common/logo_tripleluck.png) 50% 0 no-repeat; background-size:45px auto}
+#header #gnb .move_game ul li.lotto a {background:url(/images/mobile/common/img_bi_intro_logo1.png) 50% 11px no-repeat; background-size:60px auto}
+#header #gnb .move_game ul li.speetto a {background:url(/images/mobile/common/img_bi_intro_logo3.png) 50% 11px no-repeat; background-size:60px auto}
+#header #gnb .move_game ul li.kino a {background:url(/images/mobile/common/img_inbok_logo2.png) 50% 5px no-repeat; background-size:46px auto}
+#header #gnb .move_game ul li.bingo a {background:url(/images/mobile/common/img_inbok_logo5.png) 50% 5px no-repeat; background-size:46px auto}
+#header #gnb .move_game ul li.hunter a {background:url(/images/mobile/common/img_inbok_logo3.png) 50% 6px no-repeat; background-size:46px auto}
+#header #gnb .move_game ul li.doublejack a {background:url(/images/mobile/common/img_inbok_logo6.png) 50% 0 no-repeat; background-size:45px auto}
+#header #gnb .move_game ul li.catchme a {background:url(/images/mobile/common/img_inbok_logo7.png) 50% 5px no-repeat; background-size:60px auto}
+#header #gnb .menu > ul > li {border-top:1px solid #dcdcdc; box-sizing:border-box}
+#header #gnb .menu > ul > li > h2 > a {display:block; position:relative; height:57px; line-height:57px; padding:0 25px; color:#333; box-sizing:border-box}
+#header #gnb .menu > ul > li > h2 > a:after {content:""; position:absolute; right:19px; top:50%; z-index:1; width:13px; height:7px; margin-top:-4px; background:url(/images/mobile/common/bg_arrow_down.png) 50% 50% no-repeat; background-size:13px auto}
+#header #gnb .menu > ul > li > h2.active > a:after {background:url(/images/mobile/common/bg_arrow_up.png) 50% 50% no-repeat; background-size:13px auto}
+#header #gnb .menu > ul > li > ul {display:none; padding:17px 36px; border-top:1px solid #dcdcdc; background:#fafafa}
+#header #gnb .menu > ul > li > ul > li ~ li {margin-top:10px}
+#header #gnb .menu > ul > li > ul > li > a {display:inline-block; position:relative; padding:5px; font-size:13px; letter-spacing:-0.025em}
+#header #gnb .menu > ul > li > ul > li > a:after {content:""; position:absolute; left:0; top:50%; width:1px; height:1px; background:#666}
+#header #gnb .shortcut {border-top:1px solid #dcdcdc}
+#header #gnb .shortcut ul:after {content:""; display:block; clear:both}
+#header #gnb .shortcut ul li {float:left; width:50%; background:#f4f4f6}
+#header #gnb .shortcut ul li ~ li {position:relative}
+#header #gnb .shortcut ul li ~ li:after {content:""; position:absolute; left:-1px; top:50%; width:1px; height:13px; margin-top:-7px; background:#dcdcdc}
+#header #gnb .shortcut ul li a {display:block; height:56px; line-height:56px; font-size:13px; color:#888; text-align:center; letter-spacing:-0.03em}
+
+/* 상단 배너 */
+#header.withBanner {height:128px;}
+.main_banner {position:relative;width:100%;height:65px;background:#2b3559;}
+.main_banner .main_banner_link {display:inline-block;margin:0 auto;width:360px;height:100%;}
+.main_banner .main_banner_link img {height:100%;}
+.main_banner input[type="checkbox"] + label {position:absolute;right:0;top:0;padding:40px 0 0;width:60px;height:100%;color:#fff;font-size:12px;text-align:center;background:url('/images/mobile/layout/btn_banner_close.png') no-repeat 50% 10px;background-size:25px auto;box-sizing:border-box;}
+.main_banner input[type="checkbox"] + label:after {display:none;}

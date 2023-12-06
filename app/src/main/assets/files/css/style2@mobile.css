@@ -1,0 +1,17 @@
+@charset "EUC-KR";
+/* CSS Document */
+
+/* for styles */
+
+@import url("common@mobile.css");
+
+@import url("default@mobile.css");
+
+@import url("layout@mobile.css");
+
+/* 수정시 버젼 변경 필요 */
+@import url("content@mobile.css?version=v1.4");
+
+@import url("lotto720@mobile.css?version=v1.3");
+
+@import url("lotto720_style@mobile.css");

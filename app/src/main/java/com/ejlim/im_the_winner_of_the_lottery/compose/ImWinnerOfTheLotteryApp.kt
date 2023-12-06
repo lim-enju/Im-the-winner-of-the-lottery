@@ -11,7 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.ejlim.im_the_winner_of_the_lottery.compose.qr.QRScreen
-import com.ejlim.im_the_winner_of_the_lottery.compose.result.ResultScreen
+import com.ejlim.im_the_winner_of_the_lottery.compose.result.LotteryResultScreen
 
 @Composable
 fun ImWinnerOfTheLotteryApp(
@@ -42,12 +42,12 @@ fun ImWinnerOfTheLotteryNavHost(
             )
         }
         composable(
-            "result/{qrCode}",
-            arguments = listOf(navArgument("qrCode"){
+            "result/{qr_url}",
+            arguments = listOf(navArgument("qr_url"){
                 type = NavType.StringType
             })
         ){
-            ResultScreen()
+            LotteryResultScreen()
         }
     }
 

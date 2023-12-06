@@ -1,0 +1,104 @@
+@charset "EUC-KR";
+
+/* default */
+
+@font-face {
+  font-family:'Noto Sans KR';
+  font-style:normal;
+  font-weight:100;
+  src:url(../font/NotoSansKR-Thin.woff2) format('woff2'),
+       url(../font/NotoSansKR-Thin.woff) format('woff'),
+       url(../font/NotoSansKR-Thin.otf) format('opentype');
+}
+/* 커占쌉울옙 */
+@font-face {
+  font-family:'Noto Sans KR';
+  font-style:normal;
+  font-weight:300;
+  src:url(../font/NotoSansKR-Light.woff2) format('woff2'),
+       url(../font/NotoSansKR-Light.woff) format('woff'),
+       url(../font/NotoSansKR-Light.otf) format('opentype');
+}
+@font-face {
+   font-family:'Noto Sans KR';
+   font-style:normal;
+   font-weight:400;
+   src:url(../font/NotoSansKR-Regular.woff2) format('woff2'),
+        url(../font/NotoSansKR-Regular.woff) format('woff'),
+        url(../font/NotoSansKR-Regular.otf) format('opentype');
+ }
+@font-face {
+   font-family:'Noto Sans KR';
+   font-style:normal;
+   font-weight:500;
+   src:url(../font/NotoSansKR-Medium.woff2) format('woff2'),
+        url(../font/NotoSansKR-Medium.woff) format('woff'),
+        url(../font/NotoSansKR-Medium.otf) format('opentype');
+ }
+@font-face {
+   font-family:'Noto Sans KR';
+   font-style:normal;
+   font-weight:700;
+   src:url(../font/NotoSansKR-Bold.woff2) format('woff2'),
+        url(../font/NotoSansKR-Bold.woff) format('woff'),
+        url(../font/NotoSansKR-Bold.otf) format('opentype');
+ }
+ @font-face {
+   font-family:'Noto Sans KR';
+   font-style:normal;
+   font-weight:900;
+   src:url(../font/NotoSansKR-Black.woff2) format('woff2'),
+        url(../font/NotoSansKR-Black.woff) format('woff'),
+        url(../font/NotoSansKR-Black.otf) format('opentype');
+ }
+
+
+body,html {height:99.99%; -webkit-text-size-adjust:none}
+html {overflow-y:scroll}
+body {font-family:'Noto Sans KR', Dotum, sans-serif; font-size:11px; color:#666; letter-spacing:-0.05em; -webkit-text-size-adjust:none; margin:0; padding:0}
+p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, div, form, fieldset, legend, input, textarea, button, select, pre, code {margin:0; padding:0; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -o-box-sizing:border-box; -ms-box-sizing:border-box; box-sizing:border-box}
+table, th, td {margin:0; padding:0}
+input, textarea, select, button, table {font-family:'Noto Sans KR', Dotum, sans-serif; font-size:11px; color:#666}
+input, textarea, select, button {-webkit-box-sizing:border-box; -moz-box-sizing:border-box; -o-box-sizing:border-box; -ms-box-sizing:border-box; box-sizing:border-box}
+a, p, span, strong, em, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, div {line-height:1em}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {display:block; margin:0; padding:0; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -o-box-sizing:border-box; -ms-box-sizing:border-box; box-sizing:border-box}
+img, fieldset {border:0; vertical-align:middle}
+iframe, button {border:0}
+ul, ol {list-style:none}
+hr, legend, label.hide {position:absolute; top:0; left:0; width:1px; height:1px; overflow:hidden; padding:0; margin:-1px; line-height:0; clip:rect(0,0,0,0); border:0}
+caption {display:none; width:1px; height:1px; overflow:hidden; padding:0; margin:-1px; line-height:0; clip:rect(0,0,0,0); border:0}
+table {/* border-collapse:collapse; */ border-spacing:0; width:100%}
+a {text-decoration:none; font-family:'Noto Sans KR', Dotum, sans-serif; color:#666}
+a:hover, a:active, a:focus {}
+a[href^="tel:"] {color:inherit; text-decoration:inherit}
+
+input:not([type=checkbox]):not([type=radio]),
+select {-webkit-appearance:none; appearance:none; display:inline-block; height:37px; line-height:35px; padding:0 10px; font-family:'Noto Sans KR', Dotum, sans-serif; font-size:12px; color:#666; font-weight:400; letter-spacing:-0.05em; vertical-align:middle; border-radius:0; border:1px solid #dcdcdc; box-sizing:border-box}
+select {background:#fff url(/images/mobile/common/bg_select.png) 100% 0 no-repeat; background-size:16px auto}
+input:not([type=checkbox]):not([type=radio]):disabled,
+select:disabled {color:#888; background:#f9f9f9; opacity:1; -webkit-text-fill-color:none}
+/* radio, checkbox */
+input[type="checkbox"],
+input[type="radio"] {-webkit-appearance:none; appearance:none; position:absolute; left:-9999px}
+input[type="checkbox"] + label,
+input[type="radio"] + label {display:inline-block; position:relative; padding-left:23px; line-height:16px; vertical-align:middle; font-size:13px; text-align:left}
+input[type="checkbox"] + label:after {content:""; position:absolute; left:0; top:0; width:14px; height:14px; border:1px solid #ccc; border-radius:100%; background:#fff url(/images/mobile/common/ico_checkbox_def.png) center center no-repeat; background-size:9px auto}
+input[type="checkbox"]:checked + label:after {border-color:#007bc3; background:#007bc3 url(/images/mobile/common/ico_checkbox.png) center center no-repeat; background-size:9px auto}
+input[type="checkbox"].large + label {line-height:20px;padding-left:27px; color:#333}
+input[type="checkbox"].large + label:after {width:19px; height:19px; background:#fff url(/images/mobile/common/ico_checkbox_def_large.png) 50% 50% no-repeat; background-size:11px auto}
+input[type="checkbox"].large:checked + label:after {background:#007bc3 url(/images/mobile/common/ico_checkbox_large.png) 50% 50% no-repeat; background-size:11px auto}
+input[type="radio"] + label:before {content:""; position:absolute; left:0; top:0; width:14px; height:14px; border:1px solid #bfbfbf; border-radius:100%; background:#fff}
+input[type="radio"] + label:after {content:""; position:absolute; left:4px; top:4px; width:6px; height:6px; border:1px solid #fff; border-radius:100%; background:#fff}
+input[type="radio"]:checked + label:before {border-color:#007bc3}
+input[type="radio"]:checked + label:after {border-color:#007bc3; background:#007bc3}
+input[type="radio"].blk + label:before {border:1px solid #bfbfbf; background:#fff}
+input[type="radio"].blk + label:after {border:1px solid #fff; background:#fff}
+input[type="radio"].blk:checked + label:before {border-color:#333}
+input[type="radio"].blk:checked + label:after {border-color:#333; background:#333}
+textarea {-webkit-appearance:none; appearance:none; width:100%; padding:11px; border-radius:0; border:1px solid #dcdcdc}
+/* textarea:focus {border:1px solid #dcdcdc} */
+::placeholder {font-size:13px; color:#888}
+::-webkit-input-placeholder {font-size:13px; color:#888}
+::-moz-placeholder {font-size:13px; color:#888}
+:-ms-input-placeholder {font-size:13px; color:#888}
+:-moz-placeholder {font-size:13px; color:#888}
