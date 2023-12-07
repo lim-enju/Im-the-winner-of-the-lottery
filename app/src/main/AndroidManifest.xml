@@ -5,6 +5,8 @@
     <permission android:name="android.permission.CAMERA"
         tools:ignore="ReservedSystemPermission" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
