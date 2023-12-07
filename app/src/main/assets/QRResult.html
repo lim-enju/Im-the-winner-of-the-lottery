@@ -1,18 +1,39 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<title>ë™í–‰ë³µê¶Œ</title>
+	<meta charset="euc-kr">
+	<title>µ¿Çàº¹±Ç</title>
 
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="shortcut icon" href="/images/common/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/images/common/favicon.ico" type="image/x-icon">
-<script type="text/javascript" src="./files/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="./files/jquery-ui.js"></script>
-<script type="text/javascript" src="./files/common.js" charset="utf-8"></script>
-<script type="text/javascript">
+
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="/images/common/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/images/common/favicon.ico" type="image/x-icon">
+	<script type="text/javascript" src="./files/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="./files/jquery-ui.js"></script>
+	<script type="text/javascript" src="./files/common.js" charset="utf-8"></script>
+	<script type="text/javascript">
 
 fn_g_init_message("");
 
@@ -20,59 +41,59 @@ var gameUserId = "";
 
 function goGame(){
 	var userId = "";
-	
+
 	if(userId == '' || userId == null){
-		alert("ë¡œê·¸ì¸ í›„ ì‚¬ìš© í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+		alert("·Î±×ÀÎ ÈÄ »ç¿ë ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 		location.href = "/user.do?method=login";
 		return;
 	}
-	
+
 	$.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
-		dataType:"jsonp",                       // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
-		jsonp : 'callback',                     // ì½œë°±í•¨ìˆ˜ ì´ë¦„ ëª…ì´ë‹¤. 
+		dataType:"jsonp",                       // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
+		jsonp : 'callback',                     // Äİ¹éÇÔ¼ö ÀÌ¸§ ¸íÀÌ´Ù.
 		timeout:3000,
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
-			alert('ì ‘ì†ì´ ì›í™œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.'); 
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
-			
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
+			alert('Á¢¼ÓÀÌ ¿øÈ°ÇÏÁö ¾Ê½À´Ï´Ù.');
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
+
 			if(userId == data.userId && data.userId != ""){
 				doGamePopUp("");
 			}else{
-				alert("ë¡œê·¸ì¸ ì„¸ì…˜ì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ í•œë²ˆ ë¡œê·¸ì¸í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+				alert("·Î±×ÀÎ ¼¼¼ÇÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã ÇÑ¹ø ·Î±×ÀÎÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 				document.location.href = "/user.do?method=logout";
 			}
-	}});		
+	}});
 }
 
 function goGame(lottoId,agreeType){
 	var userId = "";
 	if(userId == '' || userId == null){
-		alert("ë¡œê·¸ì¸ í›„ ì‚¬ìš© í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+		alert("·Î±×ÀÎ ÈÄ »ç¿ë ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 		location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + lottoId);
 		return;
 	}
-	
+
 	$.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
-		dataType:"jsonp",                       // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
-		jsonp : 'callback',                     // ì½œë°±í•¨ìˆ˜ ì´ë¦„ ëª…ì´ë‹¤. 
+		dataType:"jsonp",                       // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
+		jsonp : 'callback',                     // Äİ¹éÇÔ¼ö ÀÌ¸§ ¸íÀÌ´Ù.
 		timeout:3000,
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
-			alert("ì‹œìŠ¤í…œì´ ì›í™œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nì´ìš©ì— ë¶ˆí¸ì„ ë“œë ¤ ì£„ì†¡í•©ë‹ˆë‹¤."); 
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
-			
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
+			alert("½Ã½ºÅÛÀÌ ¿øÈ°ÇÏÁö ¾Ê½À´Ï´Ù.\nÀÌ¿ë¿¡ ºÒÆíÀ» µå·Á ÁË¼ÛÇÕ´Ï´Ù.");
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
+
 			if(userId == data.userId && data.userId != ""){
 				doGamePopUp(lottoId,agreeType);
 			}else{
-				alert("ë¡œê·¸ì¸ ì„¸ì…˜ì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ í•œë²ˆ ë¡œê·¸ì¸í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+				alert("·Î±×ÀÎ ¼¼¼ÇÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã ÇÑ¹ø ·Î±×ÀÎÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 				document.location.href = "/user.do?method=logout";
 			}
-	}});		
+	}});
 }
 
 function goGamePnInfo(lottoId,agreeType,svcInfoPnPcMsgYn){
@@ -82,45 +103,45 @@ function goGamePnInfo(lottoId,agreeType,svcInfoPnPcMsgYn){
 		svcInfoPnMsg();
 		return;
 	}
-	
+
 	var userId = "";
 	if(userId == '' || userId == null){
-		alert("ë¡œê·¸ì¸ í›„ ì‚¬ìš© í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+		alert("·Î±×ÀÎ ÈÄ »ç¿ë ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 		location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + lottoId);
 		return;
 	}
-	
+
 	$.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"https://el.dhlottery.co.kr/portal_login.jsp",  	// url
-		dataType:"jsonp",                       // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
-		jsonp : 'callback',                     // ì½œë°±í•¨ìˆ˜ ì´ë¦„ ëª…ì´ë‹¤. 
+		dataType:"jsonp",                       // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
+		jsonp : 'callback',                     // Äİ¹éÇÔ¼ö ÀÌ¸§ ¸íÀÌ´Ù.
 		timeout:3000,
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
-			alert("ì‹œìŠ¤í…œì´ ì›í™œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nì´ìš©ì— ë¶ˆí¸ì„ ë“œë ¤ ì£„ì†¡í•©ë‹ˆë‹¤."); 
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
-			
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
+			alert("½Ã½ºÅÛÀÌ ¿øÈ°ÇÏÁö ¾Ê½À´Ï´Ù.\nÀÌ¿ë¿¡ ºÒÆíÀ» µå·Á ÁË¼ÛÇÕ´Ï´Ù.");
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
+
 			if(userId == data.userId && data.userId != ""){
 				doGamePopUp(lottoId,agreeType);
 			}else{
-				alert("ë¡œê·¸ì¸ ì„¸ì…˜ì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ í•œë²ˆ ë¡œê·¸ì¸í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+				alert("·Î±×ÀÎ ¼¼¼ÇÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã ÇÑ¹ø ·Î±×ÀÎÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 				document.location.href = "/user.do?method=logout";
 			}
-	}});		
+	}});
 }
 
 function goGameElInfo(lottoId,agreeType,svcInfoElPcMsgYn){
 	var lottoId = lottoId;
 	var svcInfoElPcMsgYn = svcInfoElPcMsgYn;
 
-	
+
 	if (svcInfoElPcMsgYn == "Y") {
 		if (lottoId == "LI21") {
 			svcInfoElTrMsg();
 			return;
 		} else if(lottoId == "LI23" || lottoId == "LI22" ) {
-			//LI23: ìºì¹˜ë¯¸,  LI22íŠ¸ë ˆì ¸í—Œí„°
+			//LI23: Ä³Ä¡¹Ì,  LI22Æ®·¹Á®ÇåÅÍ
 			svcInfoElMsg();
 			return;
 		}
@@ -128,29 +149,29 @@ function goGameElInfo(lottoId,agreeType,svcInfoElPcMsgYn){
 
 	var userId = "";
 	if(userId == '' || userId == null){
-		alert("ë¡œê·¸ì¸ í›„ ì‚¬ìš© í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+		alert("·Î±×ÀÎ ÈÄ »ç¿ë ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 		location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + lottoId);
 		return;
 	}
-	
+
 	$.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"https://el.dhlottery.co.kr/portal_login.jsp",  	// url
-		dataType:"jsonp",                       // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
-		jsonp : 'callback',                     // ì½œë°±í•¨ìˆ˜ ì´ë¦„ ëª…ì´ë‹¤. 
+		dataType:"jsonp",                       // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
+		jsonp : 'callback',                     // Äİ¹éÇÔ¼ö ÀÌ¸§ ¸íÀÌ´Ù.
 		timeout:3000,
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
-			alert("ì‹œìŠ¤í…œì´ ì›í™œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nì´ìš©ì— ë¶ˆí¸ì„ ë“œë ¤ ì£„ì†¡í•©ë‹ˆë‹¤."); 
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
-			
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
+			alert("½Ã½ºÅÛÀÌ ¿øÈ°ÇÏÁö ¾Ê½À´Ï´Ù.\nÀÌ¿ë¿¡ ºÒÆíÀ» µå·Á ÁË¼ÛÇÕ´Ï´Ù.");
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
+
 			if(userId == data.userId && data.userId != ""){
 				doGamePopUp(lottoId,agreeType);
 			}else{
-				alert("ë¡œê·¸ì¸ ì„¸ì…˜ì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ í•œë²ˆ ë¡œê·¸ì¸í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+				alert("·Î±×ÀÎ ¼¼¼ÇÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã ÇÑ¹ø ·Î±×ÀÎÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 				document.location.href = "/user.do?method=logout";
 			}
-	}});		
+	}});
 }
 
 function goGameEnInfo(lottoId,agreeType,endInfoElPcMsgYn){
@@ -160,32 +181,32 @@ function goGameEnInfo(lottoId,agreeType,endInfoElPcMsgYn){
 		endInfoElMsg();
 		return;
 	}
-	
+
 	var userId = "";
 	if(userId == '' || userId == null){
-		alert("ë¡œê·¸ì¸ í›„ ì‚¬ìš© í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+		alert("·Î±×ÀÎ ÈÄ »ç¿ë ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 		location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + lottoId);
 		return;
 	}
-	
+
 	$.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"https://el.dhlottery.co.kr/portal_login.jsp",  	// url
-		dataType:"jsonp",                       // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
-		jsonp : 'callback',                     // ì½œë°±í•¨ìˆ˜ ì´ë¦„ ëª…ì´ë‹¤. 
+		dataType:"jsonp",                       // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
+		jsonp : 'callback',                     // Äİ¹éÇÔ¼ö ÀÌ¸§ ¸íÀÌ´Ù.
 		timeout:3000,
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
-			alert("ì‹œìŠ¤í…œì´ ì›í™œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nì´ìš©ì— ë¶ˆí¸ì„ ë“œë ¤ ì£„ì†¡í•©ë‹ˆë‹¤."); 
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
-			
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
+			alert("½Ã½ºÅÛÀÌ ¿øÈ°ÇÏÁö ¾Ê½À´Ï´Ù.\nÀÌ¿ë¿¡ ºÒÆíÀ» µå·Á ÁË¼ÛÇÕ´Ï´Ù.");
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
+
 			if(userId == data.userId && data.userId != ""){
 				doGamePopUp(lottoId,agreeType);
 			}else{
-				alert("ë¡œê·¸ì¸ ì„¸ì…˜ì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ í•œë²ˆ ë¡œê·¸ì¸í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+				alert("·Î±×ÀÎ ¼¼¼ÇÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã ÇÑ¹ø ·Î±×ÀÎÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 				document.location.href = "/user.do?method=logout";
 			}
-	}});		
+	}});
 }
 
 function goGameElEnInfo(lottoId,agreeType,svcInfoElPcMsgYn,endInfoElPcMsgYn){
@@ -194,141 +215,141 @@ function goGameElEnInfo(lottoId,agreeType,svcInfoElPcMsgYn,endInfoElPcMsgYn){
 
 	if (svcInfoElPcMsgYn == "Y") {
 		if(lottoId == "LI23" || lottoId == "LI22" ) {
-			//LI23: ìºì¹˜ë¯¸,  LI22íŠ¸ë ˆì ¸í—Œí„°
+			//LI23: Ä³Ä¡¹Ì,  LI22Æ®·¹Á®ÇåÅÍ
 			svcInfoElMsg();
 			return;
 		}
 	}
-	
+
 	if (endInfoElPcMsgYn == "Y") {
 		endInfoElMsg();
 		return;
 	}
-	
+
 	var userId = "";
 	if(userId == '' || userId == null){
-		alert("ë¡œê·¸ì¸ í›„ ì‚¬ìš© í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+		alert("·Î±×ÀÎ ÈÄ »ç¿ë ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 		location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + lottoId);
 		return;
 	}
-	
+
 	$.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"https://el.dhlottery.co.kr/portal_login.jsp",  	// url
-		dataType:"jsonp",                       // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
-		jsonp : 'callback',                     // ì½œë°±í•¨ìˆ˜ ì´ë¦„ ëª…ì´ë‹¤. 
+		dataType:"jsonp",                       // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
+		jsonp : 'callback',                     // Äİ¹éÇÔ¼ö ÀÌ¸§ ¸íÀÌ´Ù.
 		timeout:3000,
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
-			alert("ì‹œìŠ¤í…œì´ ì›í™œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nì´ìš©ì— ë¶ˆí¸ì„ ë“œë ¤ ì£„ì†¡í•©ë‹ˆë‹¤."); 
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
-			
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
+			alert("½Ã½ºÅÛÀÌ ¿øÈ°ÇÏÁö ¾Ê½À´Ï´Ù.\nÀÌ¿ë¿¡ ºÒÆíÀ» µå·Á ÁË¼ÛÇÕ´Ï´Ù.");
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
+
 			if(userId == data.userId && data.userId != ""){
 				doGamePopUp(lottoId,agreeType);
 			}else{
-				alert("ë¡œê·¸ì¸ ì„¸ì…˜ì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ í•œë²ˆ ë¡œê·¸ì¸í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+				alert("·Î±×ÀÎ ¼¼¼ÇÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã ÇÑ¹ø ·Î±×ÀÎÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 				document.location.href = "/user.do?method=logout";
 			}
-	}});		
+	}});
 }
 
 function doGamePopUp(lotid,agreeType){
 	/*
-	* ìŠ¤í”¼ë“œí‚¤ë…¸ LD10, ë©”ê°€ë¹™ê³  LD11, ë”ë¸”ì­ë§ˆì´ë”ìŠ¤ LD20, íŒŒì›Œë³¼ LD14, íŠ¸ë ˆì ¸í—Œí„° LI22, íŠ¸ë¦¬í”ŒëŸ­ LI21 -> gamePop
-	* ìºì¹˜ë¯¸ LI23 -> catchPop
+	* ½ºÇÇµåÅ°³ë LD10, ¸Ş°¡ºù°í LD11, ´õºíÀè¸¶ÀÌ´õ½º LD20, ÆÄ¿öº¼ LD14, Æ®·¹Á®ÇåÅÍ LI22, Æ®¸®ÇÃ·° LI21 -> gamePop
+	* Ä³Ä¡¹Ì LI23 -> catchPop
 	*/
 	var type;
-	
+
 	if( lotid === 'LI23' ){
 		type = 'catchPop';
 	}else{
 		type = 'gamePop';
 	}
-		
+
 	if($("#agreeChk").is(":checked") || agreeType == 2){
 		var new_popup = centerPop('https://el.dhlottery.co.kr/game/TotalGame.jsp?LottoId='+ lotid, 'type', 1164, 645, 'no');
 	}else{
-		alert('ì•½ê´€ì— ë™ì˜í•´ ì£¼ì…”ì•¼ ì´ìš©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.');
+		alert('¾à°ü¿¡ µ¿ÀÇÇØ ÁÖ¼Å¾ß ÀÌ¿ëÀÌ °¡´ÉÇÕ´Ï´Ù.');
 		$("#agreeChk").focus();
 	}
-	
+
 }
 
-//ì„¤ë¬¸ì¡°ì‚¬ íŒì—…
+//¼³¹®Á¶»ç ÆË¾÷
 function popCenter(url){
-	var new_popup =	centerPop(url, 'ì„¤ë¬¸ì¡°ì‚¬', 480, 800, 'yes');
+	var new_popup =	centerPop(url, '¼³¹®Á¶»ç', 480, 800, 'yes');
 }
 
-//ìƒ˜í”Œê²Œì„ íŒì—…
+//»ùÇÃ°ÔÀÓ ÆË¾÷
 function sample_pop(code, userId){
-	
+
 	//location.href = "/gamezone.do?method=gameZoneMainView";
 	//return;
 	if(userId == null || userId == ""){
-		alert("ë¡œê·¸ì¸ í›„ ì´ìš©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+		alert("·Î±×ÀÎ ÈÄ ÀÌ¿ëÀÌ °¡´ÉÇÕ´Ï´Ù.");
 		//location.href = "/user.do?method=login";
 		//location.href = "/user.do?method=login&returnUrl=/gamezone.do?method=gameZoneMainView";
 		location.href = "/user.do?method=login&returnUrl=" + encodeURIComponent('/gameInfo.do?method=lottoMainView&lottoId=' + code);
 		return;
 	}
 	if(!$("#sampleAgreeChk").is(":checked")){
-		alert('ì•½ê´€ì— ë™ì˜í•´ ì£¼ì…”ì•¼ ì´ìš©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.');
+		alert('¾à°ü¿¡ µ¿ÀÇÇØ ÁÖ¼Å¾ß ÀÌ¿ëÀÌ °¡´ÉÇÕ´Ï´Ù.');
 		$("#sampleAgreeChk").focus();
 		return;
 	}
-	
+
 	$.ajax({
-		type:"POST",                            // ë©”ì†Œë“œíƒ€ì…
+		type:"POST",                            // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"/gamezone.do?method=autoAgreeProc",// url
-		dataType:"json",                        // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
+		dataType:"json",                        // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
 		timeout:3000,
 		async:false,
 		contentType : "application/json; charset=EUC-KR",
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
 			console.log("error");
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
 			if(data.successYn){
 				console.log(data);
 			}
 		}
 	});
-	
+
 	$.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
-		//data:{"jackpot":strJackpotData},   	// íŒŒë¼ë©”í„° íƒ€ì…
-		dataType:"jsonp",                       // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
+		//data:{"jackpot":strJackpotData},   	// ÆÄ¶ó¸ŞÅÍ Å¸ÀÔ
+		dataType:"jsonp",                       // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
 		timeout:3000,
-		jsonp : 'callback',                     // ì½œë°±í•¨ìˆ˜ ì´ë¦„ ëª…ì´ë‹¤. 
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
-			alert("ì‹œìŠ¤í…œì´ ì›í™œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nì´ìš©ì— ë¶ˆí¸ì„ ë“œë ¤ ì£„ì†¡í•©ë‹ˆë‹¤."); 
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
+		jsonp : 'callback',                     // Äİ¹éÇÔ¼ö ÀÌ¸§ ¸íÀÌ´Ù.
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
+			alert("½Ã½ºÅÛÀÌ ¿øÈ°ÇÏÁö ¾Ê½À´Ï´Ù.\nÀÌ¿ë¿¡ ºÒÆíÀ» µå·Á ÁË¼ÛÇÕ´Ï´Ù.");
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
 			if(userId == data.userId && data.userId != ""){
 				var new_popup =	centerPop('https://el.dhlottery.co.kr/game_sample/TotalGame.jsp?LottoId=' + code, 'gamePop', 1164, 645, 'no');
 			}else{
-				alert("ë¡œê·¸ì¸ ì„¸ì…˜ì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ í•œë²ˆ ë¡œê·¸ì¸í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+				alert("·Î±×ÀÎ ¼¼¼ÇÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã ÇÑ¹ø ·Î±×ÀÎÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 				document.location.href = "/user.do?method=logout";
 			}
 	}});
 }
 
-//ìƒ˜í”Œê²Œì„(ëœë¤) íŒì—…
+//»ùÇÃ°ÔÀÓ(·£´ı) ÆË¾÷
 function sample_random_pop(userId){
-	
+
 	//location.href = "/gamezone.do?method=gameZoneMainView";
 	//return;
 	if(userId == null || userId == ""){
-		alert("ë¡œê·¸ì¸ í›„ ì´ìš©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+		alert("·Î±×ÀÎ ÈÄ ÀÌ¿ëÀÌ °¡´ÉÇÕ´Ï´Ù.");
 		location.href = "/user.do?method=login";
 // 		location.href = "/user.do?method=login&returnUrl=/gamezone.do?method=gameZoneMainView";
 // 		location.href = "/common.do?method=main";
 		return;
 	}
-	
+
 	var x = Math.floor((Math.random() * 7) + 1 );
-	
+
 	if(x == 1){
 		var code = "LD14";
 	}else if(x == 2){
@@ -344,39 +365,39 @@ function sample_random_pop(userId){
 	}else if(x == 7){
 		var code = "LD11";
 	}
-	
+
 	$.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"/gamezone.do?method=autoAgreeProc",// url
-		dataType:"json",                        // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
+		dataType:"json",                        // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
 		timeout:3000,
 		async:false,
 		contentType : "application/json; charset=EUC-KR",
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
 			console.log("error");
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
 			if(data.successYn){
 				console.log(data);
 			}
 		}
 	});
-	
+
 	$.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
-		//data:{"jackpot":strJackpotData},   	// íŒŒë¼ë©”í„° íƒ€ì…
-		dataType:"jsonp",                       // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
+		//data:{"jackpot":strJackpotData},   	// ÆÄ¶ó¸ŞÅÍ Å¸ÀÔ
+		dataType:"jsonp",                       // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
 		timeout:3000,
-		jsonp : 'callback',                     // ì½œë°±í•¨ìˆ˜ ì´ë¦„ ëª…ì´ë‹¤. 
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
-			alert("ì‹œìŠ¤í…œì´ ì›í™œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nì´ìš©ì— ë¶ˆí¸ì„ ë“œë ¤ ì£„ì†¡í•©ë‹ˆë‹¤."); 
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
+		jsonp : 'callback',                     // Äİ¹éÇÔ¼ö ÀÌ¸§ ¸íÀÌ´Ù.
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
+			alert("½Ã½ºÅÛÀÌ ¿øÈ°ÇÏÁö ¾Ê½À´Ï´Ù.\nÀÌ¿ë¿¡ ºÒÆíÀ» µå·Á ÁË¼ÛÇÕ´Ï´Ù.");
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
 			if(userId == data.userId && data.userId != ""){
 				var new_popup =	centerPop('https://el.dhlottery.co.kr/game_sample/TotalGame.jsp?LottoId=' + code , 'gamePop', 1164, 645, 'no');
 			}else{
-				alert("ë¡œê·¸ì¸ ì„¸ì…˜ì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ í•œë²ˆ ë¡œê·¸ì¸í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+				alert("·Î±×ÀÎ ¼¼¼ÇÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã ÇÑ¹ø ·Î±×ÀÎÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 				document.location.href = "/user.do?method=logout";
 			}
 	}});
@@ -384,76 +405,76 @@ function sample_random_pop(userId){
 
 
 
-function doReserve(){	
+function doReserve(){
 	var userId = "";
-	
+
 	if(userId == '' || userId == null){
-		alert("ë¡œê·¸ì¸ í›„ ì‚¬ìš© í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+		alert("·Î±×ÀÎ ÈÄ »ç¿ë ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 		//location.href = "/user.do?method=login";
 		location.href = "/user.do?method=login&returnUrl=/gameInfo.do?method=game720Method";
 		return;
 	}
-	
+
 	$.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
-		dataType:"jsonp",                       // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
+		dataType:"jsonp",                       // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
 		timeout:3000,
-		jsonp : 'callback',                     // ì½œë°±í•¨ìˆ˜ ì´ë¦„ ëª…ì´ë‹¤. 
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
-			alert("ì‹œìŠ¤í…œì´ ì›í™œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nì´ìš©ì— ë¶ˆí¸ì„ ë“œë ¤ ì£„ì†¡í•©ë‹ˆë‹¤."); 
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
+		jsonp : 'callback',                     // Äİ¹éÇÔ¼ö ÀÌ¸§ ¸íÀÌ´Ù.
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
+			alert("½Ã½ºÅÛÀÌ ¿øÈ°ÇÏÁö ¾Ê½À´Ï´Ù.\nÀÌ¿ë¿¡ ºÒÆíÀ» µå·Á ÁË¼ÛÇÕ´Ï´Ù.");
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
 			if(userId == data.userId && data.userId != ""){
-					window.open('https://el.dhlottery.co.kr/lotto720.do?method=reserveBuy', 'pensionPop' , 'width=930, height=672, left=0, top=0, status=no, toolbar=no, menubar=no, location=no');				
+					window.open('https://el.dhlottery.co.kr/lotto720.do?method=reserveBuy', 'pensionPop' , 'width=930, height=672, left=0, top=0, status=no, toolbar=no, menubar=no, location=no');
 			}else{
-				alert("ë¡œê·¸ì¸ ì„¸ì…˜ì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ í•œë²ˆ ë¡œê·¸ì¸í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+				alert("·Î±×ÀÎ ¼¼¼ÇÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã ÇÑ¹ø ·Î±×ÀÎÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 				document.location.href = "/user.do?method=logout";
 			}
 	}});
-				
+
 }
 
 
 function jackpotViewPop(){
-	var url = "/gameInfo.do?method=jackpotView&lottoId=";	
+	var url = "/gameInfo.do?method=jackpotView&lottoId=";
 	commonPop("", url, 820, 700, 'yes');
 }
 
 function goLottoBuy(agreeType){
 	var userId = "";
-	
+
 	if(userId == '' || userId == null){
-		alert("ë¡œê·¸ì¸ í›„ ì‚¬ìš© í•´ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+		alert("·Î±×ÀÎ ÈÄ »ç¿ë ÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 		//location.href = "/user.do?method=login";
 		location.href = "/user.do?method=login&returnUrl=/gameInfo.do?method=buyLotto";
 		return;
 	}
 	if(agreeType == 1 && !$("#agreeChk").is(":checked")){
-		alert('ì•½ê´€ì— ë™ì˜í•´ ì£¼ì…”ì•¼ ì´ìš©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.');
+		alert('¾à°ü¿¡ µ¿ÀÇÇØ ÁÖ¼Å¾ß ÀÌ¿ëÀÌ °¡´ÉÇÕ´Ï´Ù.');
 		$("#agreeChk").focus();
 		return;
 	}
-	
-	
+
+
 	 $.ajax({
-		type:"get",                             // ë©”ì†Œë“œíƒ€ì…
+		type:"get",                             // ¸Ş¼ÒµåÅ¸ÀÔ
 		url:"https://el.dhlottery.co.kr/portal_login.jsp",    // url
-		dataType:"jsonp",                       // ì´ë¶€ë¶„ì´ ì¤‘ìš” ë°ì´íƒ€íƒ€ì…ì„ jsonPë¡œ í•´ì¤˜ì•¼ í¬ë¡œìŠ¤ë„ë©”ì¸ì„ ì´ìš©í• ìˆ˜ ìˆë‹¤.
+		dataType:"jsonp",                       // ÀÌºÎºĞÀÌ Áß¿ä µ¥ÀÌÅ¸Å¸ÀÔÀ» jsonP·Î ÇØÁà¾ß Å©·Î½ºµµ¸ŞÀÎÀ» ÀÌ¿ëÇÒ¼ö ÀÖ´Ù.
 		timeout:3000,
-		jsonp : 'callback',                     // ì½œë°±í•¨ìˆ˜ ì´ë¦„ ëª…ì´ë‹¤. 
-		error: function() {                     // ì—ëŸ¬ë‚ ê²½ìš° ì½œë°±í•¨ìˆ˜
-			alert("ì‹œìŠ¤í…œì´ ì›í™œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\nì´ìš©ì— ë¶ˆí¸ì„ ë“œë ¤ ì£„ì†¡í•©ë‹ˆë‹¤."); 
-		}, 
-		success: function(data){        		// ì„±ê³µí–ˆì„ë•Œ ì½œë°±í•¨ìˆ˜
+		jsonp : 'callback',                     // Äİ¹éÇÔ¼ö ÀÌ¸§ ¸íÀÌ´Ù.
+		error: function() {                     // ¿¡·¯³¯°æ¿ì Äİ¹éÇÔ¼ö
+			alert("½Ã½ºÅÛÀÌ ¿øÈ°ÇÏÁö ¾Ê½À´Ï´Ù.\nÀÌ¿ë¿¡ ºÒÆíÀ» µå·Á ÁË¼ÛÇÕ´Ï´Ù.");
+		},
+		success: function(data){        		// ¼º°øÇßÀ»¶§ Äİ¹éÇÔ¼ö
 			if(userId == data.userId && data.userId != ""){
-				var new_popup = centerPop('https://el.dhlottery.co.kr/game/TotalGame.jsp?LottoId=LO40', 'gamePop', 1164, 645, 'no');			
+				var new_popup = centerPop('https://el.dhlottery.co.kr/game/TotalGame.jsp?LottoId=LO40', 'gamePop', 1164, 645, 'no');
 			}else{
-				alert("ë¡œê·¸ì¸ ì„¸ì…˜ì´ í•´ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.\në‹¤ì‹œ í•œë²ˆ ë¡œê·¸ì¸í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.");
+				alert("·Î±×ÀÎ ¼¼¼ÇÀÌ ÇØÁ¦ µÇ¾ú½À´Ï´Ù.\n´Ù½Ã ÇÑ¹ø ·Î±×ÀÎÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
 				document.location.href = "/user.do?method=logout";
 			}
 	}});
-				
+
 }
 
 function loginType(pageCode){
@@ -461,7 +482,7 @@ function loginType(pageCode){
 	var pageCodes = pageCode.split("-");
 }
 
-//ì—”í„°ë§Œ ì¹˜ë©´ ë¡œê·¸ì¸
+//¿£ÅÍ¸¸ Ä¡¸é ·Î±×ÀÎ
 function enter_check_top(eventValue) {
 	if (eventValue == 13) {
 		check_if_Valid_top();
@@ -470,39 +491,39 @@ function enter_check_top(eventValue) {
 }
 
 function depositAlert(){
-	alert("12ì›” 2ì¼ ì´í›„ë¶€í„° ì‚¬ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+	alert("12¿ù 2ÀÏ ÀÌÈÄºÎÅÍ »ç¿ë °¡´ÉÇÕ´Ï´Ù.");
 }
 
 function check_if_Valid_top() {
 	var f = document.frmLogin;
-	
+
 	if (f.userId.value == "") {
-		alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤");
+		alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À");
 		f.userId.focus();
 		return;
 	}
 	if (f.password.value == "") {
-		alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”");
+		alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä");
 		f.password.focus();
 		return;
 	}
 	if (f.userId.value.length >= 15) {
-		alert("ì•„ì´ë””ê°€ ìë¦¿ìˆ˜ê°€ ì´ˆê³¼ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		alert("¾ÆÀÌµğ°¡ ÀÚ¸´¼ö°¡ ÃÊ°úµÇ¾ú½À´Ï´Ù.");
 		return;
 	}
 	if (f.password.value.length >= 101) {
-		alert("ë¹„ë°€ë²ˆí˜¸ê°€ ìë¦¿ìˆ˜ê°€ ì´ˆê³¼ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		alert("ºñ¹Ğ¹øÈ£°¡ ÀÚ¸´¼ö°¡ ÃÊ°úµÇ¾ú½À´Ï´Ù.");
 		return;
 	}
 	loginpage_top();
 }
 
 function loginpage_top(){
-	
+
 	var f = window.document.frmLogin;
 	var pageUrl = document.location.href;
 	var returnUrl="";
-	
+
 	f.method = "post";
 	//f.target = "jform";
 	if(returnUrl != ''){
@@ -531,69 +552,69 @@ function gomain() {
 
 $(document).ready(function() {
 	$("#phoneTopMenu").html("");
-	
-	if(getCookie("userId") != undefined) 
+
+	if(getCookie("userId") != undefined)
 	{
 		$('.top_userid').val(getCookie("userId"));
 	}
-	
+
 });
 
 function svcInfoPnMsg() {
-	alert("ì¼ì‹œ íŒë§¤ ì •ì§€ ì¤‘ì…ë‹ˆë‹¤.\n\níŒë§¤ ê°œì‹œì¼ : 2023ë…„ 1ì›” 4ì¼ 10ì‹œ");
+	alert("ÀÏ½Ã ÆÇ¸Å Á¤Áö ÁßÀÔ´Ï´Ù.\n\nÆÇ¸Å °³½ÃÀÏ : 2023³â 1¿ù 4ÀÏ 10½Ã");
 }
 
 function svcInfoElMsg() {
-	alert("ì¼ì‹œ íŒë§¤ì •ì§€ ì¤‘ì…ë‹ˆë‹¤.\n\nì •ì§€ ì¼ì‹œ : 2023ë…„ 12ì›” 5ì¼(í™”) 00ì‹œ\nì¬ê°œ ì¼ì‹œ : ì¶”í›„ ì•ˆë‚´");
+	alert("ÀÏ½Ã ÆÇ¸ÅÁ¤Áö ÁßÀÔ´Ï´Ù.\n\nÁ¤Áö ÀÏ½Ã : 2023³â 12¿ù 5ÀÏ(È­) 00½Ã\nÀç°³ ÀÏ½Ã : ÃßÈÄ ¾È³»");
 }
 
 
 function svcInfoElTrMsg() {
-	//alert("íŠ¸ë¦¬í”ŒëŸ­ ë³µê¶Œì€ ì¼ì‹œ íŒë§¤ ì •ì§€ ì¤‘ì…ë‹ˆë‹¤.\n\nì •ì§€ì¼ì‹œ : 2023ë…„ 10ì›” 26ì¼ 18ì‹œ30ë¶„\n\níŒë§¤ ê°œì‹œì¼ : ì¶”í›„ê³µì§€");
-	alert("íŠ¸ë¦¬í”ŒëŸ­ ë³µê¶Œì€ íŒë§¤ ì •ì§€ ì¤‘ì…ë‹ˆë‹¤.\n\nì •ì§€ì¼ì‹œ : 2023ë…„ 10ì›” 26ì¼ 23ì‹œ ê²½\nì¬ê°œ ì¼ì‹œ : ì¶”í›„ ì•ˆë‚´ ");
+	//alert("Æ®¸®ÇÃ·° º¹±ÇÀº ÀÏ½Ã ÆÇ¸Å Á¤Áö ÁßÀÔ´Ï´Ù.\n\nÁ¤ÁöÀÏ½Ã : 2023³â 10¿ù 26ÀÏ 18½Ã30ºĞ\n\nÆÇ¸Å °³½ÃÀÏ : ÃßÈÄ°øÁö");
+	alert("Æ®¸®ÇÃ·° º¹±ÇÀº ÆÇ¸Å Á¤Áö ÁßÀÔ´Ï´Ù.\n\nÁ¤ÁöÀÏ½Ã : 2023³â 10¿ù 26ÀÏ 23½Ã °æ\nÀç°³ ÀÏ½Ã : ÃßÈÄ ¾È³» ");
 }
 
 function endInfoElMsg() {
-	alert("íŒë§¤ì‹œê°„ì´ ì•„ë‹™ë‹ˆë‹¤.\n\níŒë§¤ ì‹œê°„ : 06ì‹œ ~ 24ì‹œ");
+	alert("ÆÇ¸Å½Ã°£ÀÌ ¾Æ´Õ´Ï´Ù.\n\nÆÇ¸Å ½Ã°£ : 06½Ã ~ 24½Ã");
 }
 
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
-<link rel="stylesheet" type="text/css" href="./files/style2@mobile.css">
-<script type="text/javascript" src="./files/mobile_link.js" charset="utf-8"></script>
-<script type="text/javascript" src="./files/function.mobile.js" charset="utf-8"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" type="text/css" href="./files/style2@mobile.css">
+	<script type="text/javascript" src="./files/mobile_link.js" charset="utf-8"></script>
+	<script type="text/javascript" src="./files/function.mobile.js" charset="utf-8"></script>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 	// catchme
 	function catchMeGame() {
 		document.location = "https://el.dhlottery.co.kr/game_mobile/catch/game.jsp";
 	}
-	
+
 	// doublejack
 	function doubleJackGame() {
 		document.location = "https://el.dhlottery.co.kr/game_mobile/djack/game.jsp";
 	}
-	
+
 	// treasurehunter
 	function treasureHunterGame() {
 		document.location = "https://el.dhlottery.co.kr/game_mobile/thunt/game.jsp";
 	}
-	
+
 	// speedkeno
 	function speedKenoGame() {
 		document.location = "https://el.dhlottery.co.kr/game_mobile/keno/game.jsp";
 	}
-	
+
 	// megabingo
 	function megaBingoGame() {
 		document.location = "https://el.dhlottery.co.kr/game_mobile/bingo/game.jsp";
 	}
-	
+
 	// tripleluck
 	function goTripleLuckGame(wlog,svcInfoElTrMcMsgYn) {
 		var wlog = wlog;
 		var svcInfoElTrMcMsgYn = svcInfoElTrMcMsgYn;
-		
+
 		if (svcInfoElTrMcMsgYn == "Y") {
 			svcInfoElTrMcMsg();
 			return;
@@ -605,30 +626,30 @@ function endInfoElMsg() {
 			}
 		}
 	}
-	
+
 	function svcInfoElTrMcMsg() {
-		//alert("íŠ¸ë¦¬í”ŒëŸ­ ë³µê¶Œì€ ì¼ì‹œ íŒë§¤ ì •ì§€ ì¤‘ì…ë‹ˆë‹¤.\n\nì •ì§€ì¼ì‹œ : 2023ë…„ 10ì›” 26ì¼ 23ì‹œ\n\níŒë§¤ ê°œì‹œì¼ : ì¶”í›„ê³µì§€");
-		alert("íŠ¸ë¦¬í”ŒëŸ­ ë³µê¶Œì€ íŒë§¤ ì •ì§€ ì¤‘ì…ë‹ˆë‹¤.\n\nì •ì§€ì¼ì‹œ : 2023ë…„ 10ì›” 26ì¼ 23ì‹œ ê²½\nì¬ê°œ ì¼ì‹œ : ì¶”í›„ ì•ˆë‚´ ");
-	}	
+		//alert("Æ®¸®ÇÃ·° º¹±ÇÀº ÀÏ½Ã ÆÇ¸Å Á¤Áö ÁßÀÔ´Ï´Ù.\n\nÁ¤ÁöÀÏ½Ã : 2023³â 10¿ù 26ÀÏ 23½Ã\n\nÆÇ¸Å °³½ÃÀÏ : ÃßÈÄ°øÁö");
+		alert("Æ®¸®ÇÃ·° º¹±ÇÀº ÆÇ¸Å Á¤Áö ÁßÀÔ´Ï´Ù.\n\nÁ¤ÁöÀÏ½Ã : 2023³â 10¿ù 26ÀÏ 23½Ã °æ\nÀç°³ ÀÏ½Ã : ÃßÈÄ ¾È³» ");
+	}
 </script>
-    
-    
 
 
- 	 
+
+
+
 	<!-- ----------------------------- -->
-	
-	<!-- JSP PAGE CODE ë° PAGE NAME ì •ì˜ --------->
+
+	<!-- JSP PAGE CODE ¹× PAGE NAME Á¤ÀÇ --------->
 	<script type="text/javascript">
 	<!--
 		var pageCode = "";
 		var pageName = "";
-		
+
 	//-->
 	</script>
-	
+
 	<script language="javascript">
-	
+
 		function goContents(){
 			var divTop = $("article:first").position().top;
 			$(".printContents").css("top", divTop);
@@ -637,7 +658,7 @@ function endInfoElMsg() {
 			$("#printContentsID").attr("src", "/img/event/banner/20160711qr_print_contents.jpg");
 			$(".printContents").show();
 		}
-		
+
 		function goInterview(){
 			var divTop = $("article:first").position().top;
 			$(".printInterView").css("top", divTop);
@@ -661,16 +682,16 @@ function endInfoElMsg() {
 			todayDate.setDate( todayDate.getDate() + 365 );
 			document.cookie = "PROMO_201760711=" + escape(todayDate) + "; path=/; expires=" + todayDate.toGMTString() + ";";
 		}
-		
+
 		function showBanner(){
 			$("#printBannerID").attr("src", "/img/event/banner/20160711qr_print_banner.jpg");
 			$(".printBanner").show();
 		}
-		
-		function powerEvent() {			
+
+		function powerEvent() {
 			window.location = '/promo/29sp1000';
 		}
-		
+
 		$(document).ready(function(){
 			if (document.cookie.indexOf("PROMO_201760711=") == -1){
 				showBanner();
@@ -680,273 +701,587 @@ function endInfoElMsg() {
 </head>
 <body>
 <section id="wrapper">
-    <!-- header -->
-    <header id="header">
-        
-
-<a href="#" class="menu_btn">ë©”ë‰´ì—´ê¸°</a>
-<h1 class="logo">
-    <a href="/common.do?method=main">ë™í–‰ë³µê¶Œ</a>
-</h1>
-
-	
-	<a href="/userSsl.do?method=myPage" class="mypage">ë§ˆì´í˜ì´ì§€</a>
-	
-		
-
-		
-<nav id="gnb">
-    <div class="inner">
-        <div class="btns">
-            <a href="/common.do?method=main" class="home">í™ˆìœ¼ë¡œ ê°€ê¸°</a> 
-            <strong class="logo">ë™í–‰ë³µê¶Œ</strong>
-            <a href="#" class="close">ë©”ë‰´ë‹«ê¸°</a>
-        </div>
-        <div class="move_game">
-            <h2>ë³µê¶Œì •ë³´</h2>
-            <ul>                
-                <li class="lotto lt top"><a href="/gameInfo.do?method=gameMethod">ë¡œë˜6/45</a></li>
-				<li class="pension720 top"><a href="/lotto720.do?method=pensionMoblieMain">ì—°ê¸ˆë³µê¶Œ720+</a></li>
-				<li class="speetto top"><a href="/gameInfo.do?method=speettoGameMethod">ìŠ¤í”¼ë˜</a></li>
-				<li class="power top"><a href="/lottoControl.do?method=powerBallGameMainView">íŒŒì›Œë³¼</a></li>
-				<li class="triple lt"><a href="javascript:goTripleLuckGame('N','Y');">íŠ¸ë¦¬í”ŒëŸ­</a></li>
-				<li class="kino"><a href="/lottoControl.do?method=speedKenoGameMainView">ìŠ¤í”¼ë“œí‚¤ë…¸</a></li>
-				<li class="bingo"><a href="/lottoControl.do?method=megaBingoGameMainView">ë©”ê°€ë¹™ê³ </a></li>
-				<li class="hunter"><a href="/lottoControl.do?method=hunterGameMainView">íŠ¸ë ˆì ¸í—Œí„°</a></li>
-				<li class="doublejack lt"><a href="/lottoControl.do?method=doubleJackGameMainView">ë”ë¸”ì­ë§ˆì´ë”ìŠ¤</a></li>
-				<li class="catchme"><a href="/lottoControl.do?method=catchMeGameMainView">ìºì¹˜ë¯¸</a></li>
-            </ul>
-        </div>
-        <div class="menu" id="mainMenu">
-            <ul>
-                <li>
-                    <h2>
-                        <a href="#">ë‹¹ì²¨ê²°ê³¼</a><!-- 180829 -->
-                    </h2>
-                    <ul>
-                        <li><a href="/gameResult.do?method=byWin">ë¡œë˜6/45</a></li>
-                        <li><a href="/gameResult.do?method=win720">ì—°ê¸ˆë³µê¶Œ720+</a></li>
-                        <li><a href="/gameResult.do?method=winList">ì „ìë³µê¶Œ</a></li>
-                        <li><a href="/gameResult.do?method=statByNumber">ë¡œë˜6/45 ë‹¹ì²¨í†µê³„</a></li>
-                        <li><a href="/gameResult.do?method=index720">ì—°ê¸ˆë³µê¶Œ720+ ë‹¹ì²¨í†µê³„</a></li>
-                        <li><a href="/gameResult.do?method=notReceiveInfo">ë¡œë˜6/45 ë¯¸ìˆ˜ë ¹ ë‹¹ì²¨ê¸ˆ</a></li>
-                        <li><a href="/gameResult.do?method=highWin">ë‹¹ì²¨ìì¸í„°ë·°</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <h2>
-                        <a href="#">íŒë§¤ì </a>
-                    </h2>
-                    <ul>
-                        <li><a href="/store.do?method=sellerInfo645">ë³µê¶Œ íŒë§¤ì </a></li>
-                        <li><a href="/store.do?method=topStore&pageGubun=L645">ë‹¹ì²¨ íŒë§¤ì </a></li>
-                    </ul>
-                </li>
-                <li>
-                    <h2>
-                        <a href="#">ì´ë²¤íŠ¸</a>
-                    </h2>
-                    <ul>
-                        <li><a href="/event.do?method=Eventend">ì´ë²¤íŠ¸</a></li>
-                        <!-- <li><a href="event.do?method=chipInfo">í´ë¡œë²„ì¹© ì ë¦½</a></li>
-                        <li><a href="event.do?method=chipWishList">í´ë¡œë²„ì¹© ì‚¬ìš©</a></li> -->
-                    </ul>
-                </li>
-                <li>
-                    <h2>
-                        <a href="#">í–‰ë³µê³µê°</a>
-                    </h2>
-                    <ul>
-                        <li><a href="/happy.do?method=healthCultureRule">ê±´ì „í•œ ë³µê¶Œë¬¸í™”</a></li>
-                        <li><a href="/happy.do?method=healthCulturePrevent">ë³µê¶Œ ê³¼ëª°ì… ì˜ˆë°©ë²•</a></li>
-                        <li><a href="/happy.do?method=fundInfo">ë³µê¶Œê¸°ê¸ˆ</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <h2>
-                        <a href="#">ë§ˆì´í˜ì´ì§€</a>
-                    </h2>
-                    <ul>
-                        <li><a href="/userSsl.do?method=myPage">ë§ˆì´í˜ì´ì§€</a></li>
-                        <li><a href="/myPage.do?method=lottoBuyListView">êµ¬ë§¤/ë‹¹ì²¨</a></li>
-                        <li><a href="/myPage.do?method=enjoyEval">ê±´ì „êµ¬ë§¤ í”„ë¡œê·¸ë¨</a></li>
-                        <li><a href="/myPage.do?method=campainTest">ì…€í”„ì§„ë‹¨í‰ê°€</a></li><!-- 180816 -->
-                        <li><a href="/myPage.do?method=campainProgram">ì…€í”„êµ¬ë§¤ê³„íš</a></li><!-- 180816 -->
-                        <li><a href="/myPage.do?method=depositListView">ì˜ˆì¹˜ê¸ˆ</a></li>
-                        <li><a href="/myPage.do?method=modifyLogin&modifyType=O">íšŒì›íƒˆí‡´</a></li>
-                        <!-- í´ë¡œë²„ì¹© ì œê³µ ë¡œì§ ì œê±° <li><a href="/myPage.do?method=chipList">í˜œíƒ</a></li> -->
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="shortcut">
-            <ul>
-                <li><a href="/counsel.do?method=callCenter">ê³ ê°ì„¼í„°</a></li>
-                <li><a href="/service.do?method=noticeList">ê³µì§€ì‚¬í•­</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+	<!-- header -->
+	<header id="header">
 
 
-    </header>
-    <!-- //header -->
-    <!-- container -->
-    <section id="container" class="section_qr lotto645">
-        <header class="head_title">
-            <h2>êµ¬ë§¤ë³µê¶Œ ë‹¹ì²¨ê²°ê³¼</h2>
-        </header>
-         
-	   		<div class="banner_area"><a href="javascript:void(0)"onclick="fnOpen('B');"><img src="./files/qr_m_banner_04.png" width="100%" height="100%" alt="ë¹„ê³¼ì„¸"></a></div>
-	   	 
-        <div class="contents">
-       		<div class="winner_number">
-        
-             
-       		
-       			<h3>ë¡œë˜ 6/45 <span class="key_clr1">ì œ1097íšŒ</span><span class="date">2023-12-09 20:35 ì¶”ì²¨</span></h3>
-	       		<div class="bx_notice winner">
-	       			<div>
-						ì¶•í•˜í•©ë‹ˆë‹¤!
-						<span><strong>ì´ <span class="key_clr1">3,576,950,403ì›</span> ë‹¹ì²¨</strong></span>
-					</div><!-- ì¶”ì²¨ ì „ ë³µê¶Œì¸ ê²½ìš° -->
-	       		</div>
-	       	</div>
-       		<div class="list_my_number">
-       			<div class="tbl_basic">
-       				<!-- ë²ˆí˜¸ë³„ ì»¬ëŸ¬ê°’: clr1: 1~10, clr2: 11~20, clr3: 21~30, clr4: 31~40, clr5: 41~45  -->
-        			<table>
-        				<caption>ë‚´ ë‹¹ì²¨ë²ˆí˜¸ í™•ì¸</caption>
-        				<colgroup>
-        					<col style="width:8%">
-        					<col style="width:16%">
-        					<col>
-        				</colgroup>
-        				<tbody>
+		<a href="#" class="menu_btn">¸Ş´º¿­±â</a>
+		<h1 class="logo">
+			<a href="/common.do?method=main">µ¿Çàº¹±Ç</a>
+		</h1>
 
 
-							<tr>        				
-		                		<th scope="row">
-		                			A
-									
-									
-									
-									
-								</th>   
-        						<td class="result"></td>
-								<td>
-	            					<span class="clr">4</span>
-	            					<span class="clr">7</span>
-	            					<span class="clr">9</span>
-	            					<span class="clr">15</span>
-	            					<span class="clr">31</span>
-	            					<span class="clr">34</span>
-								</td>
-							</tr>
+		<a href="/userSsl.do?method=myPage" class="mypage">¸¶ÀÌÆäÀÌÁö</a>
 
 
-							<tr>        				
-		                		<th scope="row">
-		                			
-									B
-									
-									
-									
-								</th>   
-        						<td class="result"></td>
-								<td>
-	            					<span class="clr">8</span>
-	            					<span class="clr">11</span>
-	            					<span class="clr">16</span>
-	            					<span class="clr">23</span>
-	            					<span class="clr">30</span>
-	            					<span class="clr">35</span>
-								</td>
-							</tr>
 
 
-							<tr>        				
-		                		<th scope="row">
-		                			
-									
-									C
-									
-									
-								</th>   
-        						<td class="result"></td>
-								<td>
-	            					<span class="clr">3</span>
-	            					<span class="clr">21</span>
-	            					<span class="clr">22</span>
-	            					<span class="clr">24</span>
-	            					<span class="clr">28</span>
-	            					<span class="clr">41</span>
-								</td>
-							</tr>
+		<nav id="gnb">
+			<div class="inner">
+				<div class="btns">
+					<a href="/common.do?method=main" class="home">È¨À¸·Î °¡±â</a>
+					<strong class="logo">µ¿Çàº¹±Ç</strong>
+					<a href="#" class="close">¸Ş´º´İ±â</a>
+				</div>
+				<div class="move_game">
+					<h2>º¹±ÇÁ¤º¸</h2>
+					<ul>
+						<li class="lotto lt top"><a href="/gameInfo.do?method=gameMethod">·Î¶Ç6/45</a></li>
+						<li class="pension720 top"><a href="/lotto720.do?method=pensionMoblieMain">¿¬±İº¹±Ç720+</a></li>
+						<li class="speetto top"><a href="/gameInfo.do?method=speettoGameMethod">½ºÇÇ¶Ç</a></li>
+						<li class="power top"><a href="/lottoControl.do?method=powerBallGameMainView">ÆÄ¿öº¼</a></li>
+						<li class="triple lt"><a href="javascript:goTripleLuckGame('N','Y');">Æ®¸®ÇÃ·°</a></li>
+						<li class="kino"><a href="/lottoControl.do?method=speedKenoGameMainView">½ºÇÇµåÅ°³ë</a></li>
+						<li class="bingo"><a href="/lottoControl.do?method=megaBingoGameMainView">¸Ş°¡ºù°í</a></li>
+						<li class="hunter"><a href="/lottoControl.do?method=hunterGameMainView">Æ®·¹Á®ÇåÅÍ</a></li>
+						<li class="doublejack lt"><a href="/lottoControl.do?method=doubleJackGameMainView">´õºíÀè¸¶ÀÌ´õ½º</a></li>
+						<li class="catchme"><a href="/lottoControl.do?method=catchMeGameMainView">Ä³Ä¡¹Ì</a></li>
+					</ul>
+				</div>
+				<div class="menu" id="mainMenu">
+					<ul>
+						<li>
+							<h2>
+								<a href="#">´çÃ·°á°ú</a><!-- 180829 -->
+							</h2>
+							<ul>
+								<li><a href="/gameResult.do?method=byWin">·Î¶Ç6/45</a></li>
+								<li><a href="/gameResult.do?method=win720">¿¬±İº¹±Ç720+</a></li>
+								<li><a href="/gameResult.do?method=winList">ÀüÀÚº¹±Ç</a></li>
+								<li><a href="/gameResult.do?method=statByNumber">·Î¶Ç6/45 ´çÃ·Åë°è</a></li>
+								<li><a href="/gameResult.do?method=index720">¿¬±İº¹±Ç720+ ´çÃ·Åë°è</a></li>
+								<li><a href="/gameResult.do?method=notReceiveInfo">·Î¶Ç6/45 ¹Ì¼ö·É ´çÃ·±İ</a></li>
+								<li><a href="/gameResult.do?method=highWin">´çÃ·ÀÚÀÎÅÍºä</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2>
+								<a href="#">ÆÇ¸ÅÁ¡</a>
+							</h2>
+							<ul>
+								<li><a href="/store.do?method=sellerInfo645">º¹±Ç ÆÇ¸ÅÁ¡</a></li>
+								<li><a href="/store.do?method=topStore&pageGubun=L645">´çÃ· ÆÇ¸ÅÁ¡</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2>
+								<a href="#">ÀÌº¥Æ®</a>
+							</h2>
+							<ul>
+								<li><a href="/event.do?method=Eventend">ÀÌº¥Æ®</a></li>
+								<!-- <li><a href="event.do?method=chipInfo">Å¬·Î¹öÄ¨ Àû¸³</a></li>
+                                <li><a href="event.do?method=chipWishList">Å¬·Î¹öÄ¨ »ç¿ë</a></li> -->
+							</ul>
+						</li>
+						<li>
+							<h2>
+								<a href="#">Çàº¹°ø°¨</a>
+							</h2>
+							<ul>
+								<li><a href="/happy.do?method=healthCultureRule">°ÇÀüÇÑ º¹±Ç¹®È­</a></li>
+								<li><a href="/happy.do?method=healthCulturePrevent">º¹±Ç °ú¸ôÀÔ ¿¹¹æ¹ı</a></li>
+								<li><a href="/happy.do?method=fundInfo">º¹±Ç±â±İ</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2>
+								<a href="#">¸¶ÀÌÆäÀÌÁö</a>
+							</h2>
+							<ul>
+								<li><a href="/userSsl.do?method=myPage">¸¶ÀÌÆäÀÌÁö</a></li>
+								<li><a href="/myPage.do?method=lottoBuyListView">±¸¸Å/´çÃ·</a></li>
+								<li><a href="/myPage.do?method=enjoyEval">°ÇÀü±¸¸Å ÇÁ·Î±×·¥</a></li>
+								<li><a href="/myPage.do?method=campainTest">¼¿ÇÁÁø´ÜÆò°¡</a></li><!-- 180816 -->
+								<li><a href="/myPage.do?method=campainProgram">¼¿ÇÁ±¸¸Å°èÈ¹</a></li><!-- 180816 -->
+								<li><a href="/myPage.do?method=depositListView">¿¹Ä¡±İ</a></li>
+								<li><a href="/myPage.do?method=modifyLogin&modifyType=O">È¸¿øÅ»Åğ</a></li>
+								<!-- Å¬·Î¹öÄ¨ Á¦°ø ·ÎÁ÷ Á¦°Å <li><a href="/myPage.do?method=chipList">ÇıÅÃ</a></li> -->
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="shortcut">
+					<ul>
+						<li><a href="/counsel.do?method=callCenter">°í°´¼¾ÅÍ</a></li>
+						<li><a href="/service.do?method=noticeList">°øÁö»çÇ×</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
 
-							<tr>        				
-		                		<th scope="row">
-		                			
-									
-									
-									D
-									
-								</th>   
-        						<td class="result"></td>
-								<td>
-	            					<span class="clr">7</span>
-	            					<span class="clr">10</span>
-	            					<span class="clr">21</span>
-	            					<span class="clr">29</span>
-	            					<span class="clr">36</span>
-	            					<span class="clr">39</span>
-								</td>
-							</tr>
+	</header>
+	<!-- //header -->
+	<!-- container -->
+	<section id="container" class="section_qr lotto645">
+		<header class="head_title">
+			<h2>±¸¸Åº¹±Ç ´çÃ·°á°ú</h2>
+		</header>
+
+		<div class="banner_area"><a href="javascript:void(0)"onclick="fnOpen('B');"><img src="./files/event/qr_m_banner_04.png" width="100%" height="100%" alt="ºñ°ú¼¼"></a></div>
+
+		<div class="contents">
+			<div class="winner_number">
 
 
-							<tr>        				
-		                		<th scope="row">
-		                			
-									
-									
-									
-									E
-								</th>   
-        						<td class="result"></td>
-								<td>
-	            					<span class="clr">8</span>
-	            					<span class="clr">16</span>
-	            					<span class="clr">26</span>
-	            					<span class="clr">34</span>
-	            					<span class="clr">42</span>
-	            					<span class="clr">44</span>
-								</td>
-							</tr>
-						
-        				</tbody>
-        			</table>
-        		</div>
-        		<p class="extra">- QR ë‹¹ì²¨í™•ì¸ì€ ë³´ì¡° í™•ì¸ìˆ˜ë‹¨ì´ë¯€ë¡œ ë°˜ë“œì‹œ ì‹¤ë¬¼ê³¼ ëŒ€ì¡°í•˜ì‹œê¸° ë°”ë¼ë©°, ë‹¹ì²¨ê¸ˆì€ ì‹¤ë¬¼ ë³µê¶Œì†Œì§€ìì—ê²Œ ì§€ê¸‰í•©ë‹ˆë‹¤.</p>
-       		</div>	       		
-       		        
-       		
-       	
-       		
-			
-        	<div class="notice_app">
-       			<a href="javascript:linkAppdown();">
-       				<span class="app_img">ë™í–‰ë³µê¶Œ ì•± ì•„ì´ì½˜</span>
-					<span class="info"><span>ë™í–‰ë³µê¶Œ ì•± ë‹¤ìš´ë°›ê³ <span>ë³µê¶Œì •ë³´ì™€ ë‹¤ì–‘í•œ ì•Œë¦¼ì„œë¹„ìŠ¤ë¥¼ ë°›ì•„ë³´ì„¸ìš”.</span></span></span>
-       			</a>
-       		</div>
-        </div>
-        <div class="showImg" style="display:none">
-    		<a href="javascript:void(0)"onclick="fnOpen('C');"><img src="./files/qr_m_banner_03.jpg" width="100%" height="100%" alt="ë¹„ê³¼ì„¸"></a>
-    	</div>
-    </section>
-    <!-- //container -->
-<script type="text/javascript">
+
+
+				<h3>·Î¶Ç 6/45 <span id="round_num" class="key_clr1">Á¦1003È¸</span><span class="date">2022-02-19 ÃßÃ·</span></h3>
+				<div class="bx_winner winner">
+					<strong class="tit">´çÃ·¹øÈ£</strong>
+					<div class="list">
+						<!-- ¹øÈ£º° ÄÃ·¯°ª: clr1: 1~10, clr2: 11~20, clr3: 21~30, clr4: 31~40, clr5: 41~45  -->
+						<div class="clr clr1"><span></span></div>
+						<div class="clr clr1"><span></span></div>
+						<div class="clr clr3"><span></span></div>
+						<div class="clr clr4"><span></span></div>
+						<div class="clr clr5"><span></span></div>
+						<div class="clr clr5"><span></span></div>
+						<div class="plus clr clr4"><span>10</span></div>
+					</div>
+				</div>
+
+				<script>
+					//È¸Â÷ Á¤º¸ ¼¼ÆÃ
+					document.getElementById("round_num").textContent = LotteryAndroid.getRoundNumberFromAndroid();
+
+					//1µî ¹øÈ£ ¼¼ÆÃ
+					const winnerNumbers = JSON.parse(LotteryAndroid.getWinnerNumberFromAndroid());
+					const winnerElements = document.querySelectorAll('.bx_winner .list .clr span');
+
+					for (let i = 0; i < winnerElements.length - 1; i++) {
+						winnerElements[i].textContent = winnerNumbers[i];
+					}
+				</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class="bx_notice winner">
+					<div><span>ÃàÇÏÇÕ´Ï´Ù!</span><strong>ÃÑ <span class="key_clr1">9,055,584,110¿ø</span> ´çÃ·</strong></div>
+
+
+				</div>
+
+			</div>
+			<div class="list_my_number">
+				<div class="tbl_basic">
+					<!-- ¹øÈ£º° ÄÃ·¯°ª: clr1: 1~10, clr2: 11~20, clr3: 21~30, clr4: 31~40, clr5: 41~45  -->
+					<table>
+						<caption>³» ´çÃ·¹øÈ£ È®ÀÎ</caption>
+						<colgroup>
+							<col style="width:8%">
+							<col style="width:16%">
+							<col>
+						</colgroup>
+						<tbody>
+
+
+						<tr>
+							<th scope="row">
+								A
+
+
+
+
+							</th>
+							<td class="result">1µî´çÃ·</td>
+							<td>
+
+								<span class="clr clr1">1</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr1">4</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr3">29</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr4">39</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr5">43</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr5">45</span>
+
+
+							</td>
+						</tr>
+
+
+						<tr>
+							<th scope="row">
+
+								B
+
+
+
+							</th>
+							<td class="result">1µî´çÃ·</td>
+							<td>
+
+								<span class="clr clr1">1</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr1">4</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr3">29</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr4">39</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr5">43</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr5">45</span>
+
+
+							</td>
+						</tr>
+
+
+						<tr>
+							<th scope="row">
+
+
+								C
+
+
+							</th>
+							<td class="result">1µî´çÃ·</td>
+							<td>
+
+								<span class="clr clr1">1</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr1">4</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr3">29</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr4">39</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr5">43</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr5">45</span>
+
+
+							</td>
+						</tr>
+
+
+						<tr>
+							<th scope="row">
+
+
+
+								D
+
+							</th>
+							<td class="result">1µî´çÃ·</td>
+							<td>
+
+								<span class="clr clr1">1</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr1">4</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr3">29</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr4">39</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr5">43</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr5">45</span>
+
+
+							</td>
+						</tr>
+
+
+						<tr>
+							<th scope="row">
+
+
+
+
+								E
+							</th>
+							<td class="result">1µî´çÃ·</td>
+							<td>
+
+								<span class="clr clr1">1</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr1">4</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr3">29</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr4">39</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr5">43</span>
+
+
+
+
+
+
+
+
+
+								<span class="clr clr5">45</span>
+
+
+							</td>
+						</tr>
+
+						</tbody>
+					</table>
+				</div>
+				<p class="extra">- QR ´çÃ·È®ÀÎÀº º¸Á¶ È®ÀÎ¼ö´ÜÀÌ¹Ç·Î ¹İµå½Ã ½Ç¹°°ú ´ëÁ¶ÇÏ½Ã±â ¹Ù¶ó¸ç, ´çÃ·±İÀº ½Ç¹° º¹±Ç¼ÒÁöÀÚ¿¡°Ô Áö±ŞÇÕ´Ï´Ù.</p>
+			</div>
+
+
+
+
+			<div class="notice_app">
+				<a href="javascript:linkAppdown();">
+					<span class="app_img">µ¿Çàº¹±Ç ¾Û ¾ÆÀÌÄÜ</span>
+					<span class="info"><span>µ¿Çàº¹±Ç ¾Û ´Ù¿î¹Ş°í<span>º¹±ÇÁ¤º¸¿Í ´Ù¾çÇÑ ¾Ë¸²¼­ºñ½º¸¦ ¹Ş¾Æº¸¼¼¿ä.</span></span></span>
+				</a>
+			</div>
+		</div>
+		<div class="showImg" style="display:none">
+			<a href="javascript:void(0)"onclick="fnOpen('C');"><img src="/images/mobile/event/qr_m_banner_03.jpg" width="100%" height="100%" alt="ºñ°ú¼¼"></a>
+		</div>
+	</section>
+	<!-- //container -->
+	<script type="text/javascript">
 function linkAppdown() {
 	var isMobile = {
         Android: function () {
@@ -962,7 +1297,7 @@ function linkAppdown() {
 	} else if(isMobile.IOS()){
 		location.href = "https://itunes.apple.com/kr/app/%EB%8F%99%ED%96%89%EB%B3%B5%EA%B6%8C/id1444390490?mt=8";
 	} else {
-		alert("ëª¨ë°”ì¼ì—ì„œë§Œ ì´ìš©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+		alert("¸ğ¹ÙÀÏ¿¡¼­¸¸ ÀÌ¿ëÀÌ °¡´ÉÇÕ´Ï´Ù.");
 	}
 }
 
@@ -982,38 +1317,38 @@ function fnOpen(str){
 // 	}
 }
 </script>
-    <!-- footer -->
-    <footer id="footer">
-        
+	<!-- footer -->
+	<footer id="footer">
 
 
-<div class="contact">
-	<div class="tel">
-		<strong><span>ìƒë‹´ì „í™” </span><a href="tel:15886450">1588-6450</a></strong>
-		<p>ì›”-ê¸ˆ, ì¼ìš”ì¼ : 06:00 - 24:00<span>í† ìš”ì¼ : 06:00 - 21:00</span></p>
-	</div>
-	<div class="one">
-		<strong>1ëŒ€1 ìƒë‹´</strong>
-		<p>ì›”-ê¸ˆìš”ì¼ : 09:00 - 18:00<span>í† ,ì¼ ë° ë²•ì •ê³µíœ´ì¼ íœ´ë¬´</span></p>
-	</div>
-</div>
-<div class="btns">
-	
-	   
-	   
-	       <a href="https://m.dhlottery.co.kr/user.do?method=loginm" class="btn_wht xsmall"><span>ë¡œê·¸ì¸</span></a>
-	   
-	
-	<a href="/counsel.do?method=callCenter" class="btn_wht xsmall"><span>ê³ ê°ì„¼í„°</span></a>
-</div>
-<div class="clause">
-	<ul>
-		<li><strong><a href="clause.do?method=footerPrivate">ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</a></strong></li>
-		<li><a href="clause.do?method=mobileUseClause">ì´ìš©ì•½ê´€</a></li>
-	</ul>
-</div>
-    </footer>
-    <!-- //footer -->
+
+		<div class="contact">
+			<div class="tel">
+				<strong><span>»ó´ãÀüÈ­ </span><a href="tel:15886450">1588-6450</a></strong>
+				<p>¿ù-±İ, ÀÏ¿äÀÏ : 06:00 - 24:00<span>Åä¿äÀÏ : 06:00 - 21:00</span></p>
+			</div>
+			<div class="one">
+				<strong>1´ë1 »ó´ã</strong>
+				<p>¿ù-±İ¿äÀÏ : 09:00 - 18:00<span>Åä,ÀÏ ¹× ¹ıÁ¤°øÈŞÀÏ ÈŞ¹«</span></p>
+			</div>
+		</div>
+		<div class="btns">
+
+
+
+			<a href="https://m.dhlottery.co.kr/user.do?method=loginm" class="btn_wht xsmall"><span>·Î±×ÀÎ</span></a>
+
+
+			<a href="/counsel.do?method=callCenter" class="btn_wht xsmall"><span>°í°´¼¾ÅÍ</span></a>
+		</div>
+		<div class="clause">
+			<ul>
+				<li><strong><a href="clause.do?method=footerPrivate">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</a></strong></li>
+				<li><a href="clause.do?method=mobileUseClause">ÀÌ¿ë¾à°ü</a></li>
+			</ul>
+		</div>
+	</footer>
+	<!-- //footer -->
 </section>
 </body>
 </html>
