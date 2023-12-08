@@ -78,7 +78,9 @@ class LotteryResultViewModel @Inject constructor(
         }
 
         //로또번호를 string 에서 int로 변환
-        val myNumber = queryString.map { numberString ->
+        val myNumber = queryString
+            .drop(1)
+            .map { numberString ->
             numberString
                 .chunked(2)
                 .filter { number -> number != "00" }
@@ -94,7 +96,7 @@ class LotteryResultViewModel @Inject constructor(
         myLotteryNumber = myNumber
 
         //1등 번호
-        val winnerIndex = (1 until queryString.size).random()
+        val winnerIndex = (queryString.indices).random()
         winnerLotteryNumber = myNumber[winnerIndex]
 
         Log.d("EJLIM11", "NUMBER: " +

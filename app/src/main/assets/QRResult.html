@@ -918,347 +918,7 @@ function endInfoElMsg() {
 							<col style="width:16%">
 							<col>
 						</colgroup>
-						<tbody>
-
-
-						<tr>
-							<th scope="row">
-								A
-
-
-
-
-							</th>
-							<td class="result">1µÓ¥Á√∑</td>
-							<td>
-
-								<span class="clr clr1">1</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr1">4</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr3">29</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr4">39</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr5">43</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr5">45</span>
-
-
-							</td>
-						</tr>
-
-
-						<tr>
-							<th scope="row">
-
-								B
-
-
-
-							</th>
-							<td class="result">1µÓ¥Á√∑</td>
-							<td>
-
-								<span class="clr clr1">1</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr1">4</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr3">29</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr4">39</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr5">43</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr5">45</span>
-
-
-							</td>
-						</tr>
-
-
-						<tr>
-							<th scope="row">
-
-
-								C
-
-
-							</th>
-							<td class="result">1µÓ¥Á√∑</td>
-							<td>
-
-								<span class="clr clr1">1</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr1">4</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr3">29</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr4">39</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr5">43</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr5">45</span>
-
-
-							</td>
-						</tr>
-
-
-						<tr>
-							<th scope="row">
-
-
-
-								D
-
-							</th>
-							<td class="result">1µÓ¥Á√∑</td>
-							<td>
-
-								<span class="clr clr1">1</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr1">4</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr3">29</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr4">39</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr5">43</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr5">45</span>
-
-
-							</td>
-						</tr>
-
-
-						<tr>
-							<th scope="row">
-
-
-
-
-								E
-							</th>
-							<td class="result">1µÓ¥Á√∑</td>
-							<td>
-
-								<span class="clr clr1">1</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr1">4</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr3">29</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr4">39</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr5">43</span>
-
-
-
-
-
-
-
-
-
-								<span class="clr clr5">45</span>
-
-
-							</td>
-						</tr>
+						<tbody id="tbody2">
 
 						</tbody>
 					</table>
@@ -1267,6 +927,43 @@ function endInfoElMsg() {
 			</div>
 
 
+			<script>
+				var wrapper = document.getElementById("tbody2");
+				const winnerNumber = JSON.parse(LotteryAndroid.getWinnerNumberFromAndroid());
+				const myLotteryNumber = JSON.parse(LotteryAndroid.getAllNumberFromAndroid());
+
+				for(var i = 0; i < myLotteryNumber.length; i++){
+					var numbers = myLotteryNumber[i]
+					const sameNumber = winnerNumber.filter(value => numbers.includes(value))
+
+					var grade = ""
+					if(sameNumber.length == 6) grade = "1µÓ ¥Á√∑"
+					else if(sameNumber.length == 5) grade = "3µÓ ¥Á√∑"
+					else if(sameNumber.length == 4) grade = "4µÓ ¥Á√∑"
+					else if(sameNumber.length == 3) grade = "5µÓ ¥Á√∑"
+					else grade = "≥´√∑"
+
+					var row =
+						`<tr>` +
+							`<th scope='row'>${i}</th>` +
+							`<td class='result'>${grade}</td>`+
+								`<td>`+
+									`<span class='clr ${sameNumber.includes(numbers[0])?`clr1`:``}'>${numbers[0]}</span>`+
+									`<span class='clr ${sameNumber.includes(numbers[1])?`clr1`:``}'>${numbers[1]}</span>`+
+									`<span class='clr ${sameNumber.includes(numbers[2])?`clr3`:``}'>${numbers[2]}</span>`+
+									`<span class='clr ${sameNumber.includes(numbers[3])?`clr4`:``}'>${numbers[3]}</span>`+
+									`<span class='clr ${sameNumber.includes(numbers[4])?`clr5`:``}'>${numbers[4]}</span>`+
+									`<span class='clr ${sameNumber.includes(numbers[5])?`clr5`:``}'>${numbers[5]}</span>`+
+								`</td>`+
+						`</tr>`
+					;
+
+					console.log(row);
+					wrapper.innerHTML += row;
+				}
+
+
+			</script>
 
 
 			<div class="notice_app">
